@@ -3,12 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Web Designer - Kanako Morishita</title>
+        <title>isobeage - Kanako Morishita</title>
         <meta name="description" content="森下可奈子のポートフォリオサイトです。">
-        <meta name="keywords" content="Web, デザイン, デザイナー, ポートフォリオ, Web制作">
+        <meta name="keywords" content="Web, ポートフォリオ, Web制作">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/lightbox.min.css">
     </head>
     <body>
         <header>
@@ -16,10 +17,12 @@
             <div class="profile">
                 <div class="businesscard">
                     <img src="./images/profile.jpg" alt="プロフィール写真" width="140" height="140">
-                    <h1 class="site-title abel uppercase text-center"><span>Kanako Morishita</span></h1>
+                    <h1 class="site-title abel uppercase text-center">isobeage<span>Kanako Morishita</span></h1>
                 </div>
-                <p>東京都在住、森下可奈子です。オンラインスクールでWeb制作について学び、web業界への転職活動中。
-                自分一人でサービスを作成できるようなエンジニア兼デザイナーを目指しています。</p>
+                <p>
+                  東京都在住、森下可奈子です。オンラインスクールでWeb制作について学び、HTMLコーダーとして働いています。
+                  イラストや漫画制作を個人で請け負っています。
+                </p>
             </div>
         </header>
         <main>
@@ -29,11 +32,10 @@
                     <div class="skill-box">
                     <i aria-hidden="true" class="skill-icon fa fa-laptop"></i>
                     <h3 class="text-center">Web</h3>
-                    <p>HTML/CSSでのコーディングを勉強しました。</p>
                     <ul>
-                        <li>html/css<br/> … 独力で使用できる</li>
-                        <li>JavaScript<br/> … サポートがあれば使用できる</li>
-                        <li>Sass/Compass<br/> … サポートがあれば使用できる</li>
+                        <li>html/css<br/> … 独力で使用できます。</li>
+                        <li>JavaScript<br/> … 勉強中。サポートがあれば使用できます。</li>
+                        <li>Sass/Compass<br/> … サポートがあれば使用できます。</li>
                     </ul>
                     </div>
                     <div class="skill-box">
@@ -41,17 +43,19 @@
                     <h3 class="text-center">Server</h3>
                     <p>インフラエンジニアとしての経験があります。</p>
                     <ul>
-                        <li>UNIX/Linux/Windows<br/> … 独力で使用、構築できる</li>
-                        <li>ShellScript(ksh/bash)<br/> … 独力で使用できる</li>
-                        <li>CiscoSwitch/Router<br/> … サポートがあれば構築できる</li>
+                        <li>UNIX/Linux/Windows<br/> … 独力で使用、構築できます。</li>
+                        <li>ShellScript(ksh/bash)<br/> … 独力で使用できます。</li>
+                        <li>CiscoSwitch/Router<br/> … サポートがあれば構築できます。</li>
                     </ul>
                     </div>
                     <div class="skill-box">
                     <i aria-hidden="true" class="skill-icon fa fa-pencil"></i>
-                    <h3 class="text-center">other</h3>
-                    <p>その他スキルについては以下の通りです。</p>
+                    <h3 class="text-center">illustration</h3>
+                    <p>tumbler(<a href="//www.tumblr.com/blog/isobeagedesu" target="_blank">isobeage</a>)に制作物をアップしています。以下制作環境です。</p>
                     <ul>
-                        <li>Photoshop<br/> … 独力で使用できる</li>
+                        <li>PhotoshopCS5</li>
+                        <li>ClipStudioPaintEX</li>
+                        <li>水彩絵の具</li>
                     </ul>
                     </div>
                 </div>
@@ -60,10 +64,9 @@
                 <h2 class="text-center">Works</h2>
                 <div class="flex-container">
                     <div class="works-box">
-                        <a href="http://chikuwaa.sakura.ne.jp/" target="_blank">
-                            <img src="./images/original_site_top.jpg" alt="オリジナルサイト作成">
+                        <a href="./images/original_site_top.jpg" data-lightbox="image-1"><img src="./images/original_site_top.jpg" alt="オリジナルサイト作成">
                             <div class="works-box-inner text-center">
-                                <span class="button-browse">Browse</span>
+                                <span class="button-browse">Sample Image</span>
                             </div>
                             <div class="text-center">
                                 <h3>オンライン学習課題<br/>オリジナルサイト作成</h3>
@@ -72,12 +75,17 @@
                                 <small>html/css/js※検索機能部分作成中</small>
                             </div>
                         </a>
+                        <div class="other_samples">
+                          <a href="./images/original_site_all.jpg" data-lightbox="image-1">01</a>
+                          <a href="./images/original_site_result.jpg" data-lightbox="image-1">02</a>
+                          <a href="./images/original_site_result02.jpg" data-lightbox="image-1">03</a>
+                        </div>
                     </div>
                     <div class="works-box">
-                        <a href="#works">
+                        <a href="./images/coprate_site.jpg" data-lightbox="image-2">
                             <img src="./images/coprate_site.jpg" alt="コーポレートサイト下層ページ模写">
                             <div class="works-box-inner text-center">
-                                <span class="button-browse">No Sample Page</span>
+                                <span class="button-browse">Sample Image</span>
                             </div>
                             <div class="text-center">
                                 <h3>オンライン学習課題<br/>コーポレートサイト模写</h3>
@@ -88,10 +96,10 @@
                         </a>
                     </div>
                     <div class="works-box">
-                        <a href="#works">
+                        <a href="./images/shopping_site.jpg" data-lightbox="image-3">
                             <img src="./images/shopping_site.jpg" alt="ショッピングサイトコーディング">
                             <div class="works-box-inner text-center">
-                                <span class="button-browse">No Sample Page</span>
+                                <span class="button-browse">Sample Image</span>
                             </div>
                             <div class="text-center">
                                 <h3>オンライン学習課題<br/>ショッピングサイトコーディング</h3>
@@ -106,13 +114,16 @@
             <section id="contact">
                 <h2 class="text-center">Contact</h2>
                 <ul>
-                    <li><a href="mailto:k.m.mikan215+morishita@gmail.com"><i aria-label="メール" class="fa fa-envelope-o"></i></a></li>
-                    <li class="github"><a href="https://github.com/chikuwaa"><i aria-label="GitHub" class="fa fa-github"></i></a></li>
+                    <li><a href="mailto:k.andar.m.p@gmail.com"><i aria-label="メール" class="fa fa-envelope-o"></i></a></li>
+                    <li class="github"><a href="//github.com/chikuwaa" target="_blank"><i aria-label="GitHub" class="fa fa-github"></i></a></li>
+                    <li class="tumblr"><a href="//www.tumblr.com/blog/isobeagedesu" target="_blank"><i aria-label="tumblr" class="fa fa-tumblr"></i></a></li>
                 </ul>
             </section>
         </main>
         <footer>
             <small class="abel uppercase">&copy; Kanako Morishita, All Rights Reserved.</small>
         </footer>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
     </body>
 </html>

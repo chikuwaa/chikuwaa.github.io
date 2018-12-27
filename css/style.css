@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* 文字コードの指定 */
 /* Google Fonts用のCSSを読み込み */
 @import "https://fonts.googleapis.com/css?family=Abel";
 /*
@@ -147,6 +146,8 @@ header {
     font-weight: bold;
     margin-bottom: 10px;
     color: #2c2a96; }
+  #skills p a {
+    text-decoration: underline; }
   #skills ul {
     margin-left: 20px; }
   #skills li {
@@ -204,6 +205,8 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%; }
+  #works .other_samples {
+    display: none; }
 
 /*
 連絡先--------------------*/
@@ -229,6 +232,9 @@ header {
       font-size: 3.2rem; }
       #contact ul .github i {
         margin-left: 2px; }
+    #contact ul .tumblr i {
+      display: inline-block;
+      margin-top: 11px; }
     #contact ul a {
       display: block;
       width: 50px;

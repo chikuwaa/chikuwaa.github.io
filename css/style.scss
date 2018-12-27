@@ -1,4 +1,3 @@
-/* 文字コードの指定 */
 @charset "UTF-8";
 /* Google Fonts用のCSSを読み込み */
 @import 'https://fonts.googleapis.com/css?family=Abel';
@@ -113,7 +112,7 @@ header{
     border: 2px solid $ink1;
     margin-top: 20px;
     margin-bottom: 20px;
-    
+
     .profile{
         clear: both;
         width: 60%;
@@ -133,12 +132,12 @@ header{
         span{
             font-size: 4.2rem;
             display: block;
-            color: $ink1; 
+            color: $ink1;
         }
     }
     p{
         font-size: 1.6rem;
-    } 
+    }
 }
 
 /*
@@ -185,6 +184,11 @@ header{
         margin-bottom: 10px;
         color: $ink1;
     }
+    p{
+      a{
+        text-decoration: underline;
+      }
+    }
     ul{
         margin-left:20px;
     }
@@ -199,7 +203,7 @@ header{
     border: 2px solid $ink1;
     margin-top: 20px;
     margin-bottom: 20px;
-    
+
     h2{
         margin-bottom: 50px;
     }
@@ -215,10 +219,10 @@ header{
             position: relative;
             display: block;
             height: 100%;
-            
+
             background-color:$ink1;
             color:$highlight;
-        
+
             .works-box-inner{
                 position: absolute;
                 top: 0;
@@ -263,6 +267,9 @@ header{
             width: 100%;
         }
     }
+    .other_samples{
+      display: none;
+    }
 }
 
 /*
@@ -291,10 +298,16 @@ header{
         }
         .github{
             font-size: 3.2rem;
-            
+
             i{
                 margin-left: 2px;
             }
+        }
+        .tumblr{
+          i{
+              display: inline-block;
+              margin-top: 11px;
+          }
         }
         a{
             display: block;
@@ -339,7 +352,7 @@ footer
             margin:10px 0px;
         }
     }
-    
+
     //ワーク
     #works{
         .flex-container{
