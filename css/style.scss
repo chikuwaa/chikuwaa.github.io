@@ -11,6 +11,34 @@ $ink2 : #000000;
 $highlight : #ffffff;
 
 /*
+デバイス対応--------------------*/
+$pc: 1024px; // PC
+$tab: 768px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+.sp{
+  display: none;
+  @include sp{
+    display: block;
+  };
+}
+/*
 ページ全体--------------------*/
 html
 {
@@ -26,10 +54,17 @@ body
     background-color: $background;
     max-width: 1024px;
     margin: 0 auto;
+
+    @include sp{
+      font-size: 1.3rem;
+    };
 }
 section
 {
     padding: 60px 0;
+    @include sp{
+      padding: 50px 0;
+    };
 }
 section .container
 {
@@ -38,6 +73,9 @@ section .container
 section h2
 {
     font-size: 3.2rem;
+    @include sp{
+      font-size: 2.4rem;
+    };
 }
 a{
     text-decoration: none;
@@ -118,25 +156,41 @@ header{
         width: 60%;
         margin: 0 auto;
         padding: 60px 0px 70px 0px;
+        @include sp{
+          width: 70%;
+          padding: 10px 0px 50px 0px;
+        };
     }
     .businesscard{
         display: flex;
         justify-content: space-around;
         align-items: center;
         margin-bottom: 30px;
+        @include tab{
+          display: block;
+          text-align: center;
+        };
     }
     .site-title{
         font-size: 1.8rem;
         line-height: normal;
-
+        @include sp{
+          font-size: 1.5rem;
+        };
         span{
             font-size: 4.2rem;
             display: block;
             color: $ink1;
+            @include sp{
+              font-size: 2.8rem;
+            };
         }
     }
     p{
         font-size: 1.6rem;
+        @include sp{
+          font-size: 1.4rem;
+        };
     }
 }
 
@@ -145,15 +199,72 @@ header{
 #skills
 {
     background-color: $ink1;
+    padding-bottom: 10px;
 
-    .container{
-        display: -webkit-flex;
-        display:         flex;
-        justify-content: space-between;
+    .skill_tab{
+      display: flex;
+      justify-content: space-between;
+      margin: 0px 10px;
+
+      li{
+        width: (100% / 3);
+        list-style: none;
+        box-sizing: border-box;
+
+        span{
+          cursor: pointer;
+          display: block;
+          width: 100%;
+          background-color:$ink1;
+          text-align: center;
+          padding: 10px 0px;
+          border: solid 1px $highlight;
+          box-sizing: border-box;
+
+          &.on{
+            background-color:$highlight;
+          }
+        }
+
+        .skill-icon{
+          display: inline-block;
+          font-size: 3.5rem;
+          color:$highlight;
+          vertical-align: middle;
+          @include tab{
+            font-size: 2.4rem;
+
+          };
+        }
+        h3{
+          font-size: 2.4rem;
+          color:$highlight;
+          display: inline-block;
+          vertical-align: middle;
+          @include tab{
+            font-size: 1.8rem;
+
+          };
+          @include sp{
+            display: none;
+          };
+        }
+        .on{
+          .skill-icon{
+            color:$ink1;
+          }
+          h3{
+            color: $ink1;
+          }
+        }
+      }
     }
     h2{
         margin-bottom: 60px;
         color:$highlight;
+        @include sp{
+          margin-bottom: 50px;
+        };
     }
     .skill-box{
         -webkit-box-sizing: border-box;
@@ -162,39 +273,43 @@ header{
         -webkit-flex: 1;
                 flex: 1;
         margin: 0px 10px;
-        padding: 20px;
+        padding: 50px 20px;
         background-color: $background;
+        display: none;
+        @include sp{
+          padding: 25px 20px;
+        };
+
+        .tab_tit{
+          font-size: 18px;
+          text-align: center;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        p{
+          font-size: 16px;
+          @include sp{
+            font-size: 14px;
+          };
+          a{
+            text-decoration: underline;
+          }
+        }
+        ul{
+            margin-left:20px;
+        }
+        li{
+            list-style: circle;
+            font-size: 16px;
+            @include sp{
+              font-size: 14px;
+            };
+        }
     }
-    i{
-        font-size: 4.5rem;
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
-        width: 80px;
-        height: 80px;
-        margin-bottom: 5px;
-        padding-top: 15px;
-        text-align: center;
-        color: $highlight;
-        background-color: $ink1;
+    .tab01{
+      display: block;
     }
-    h3{
-        font-size: 2.4rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: $ink1;
-    }
-    p{
-      a{
-        text-decoration: underline;
-      }
-    }
-    ul{
-        margin-left:20px;
-    }
-    li{
-        list-style: circle;
-    }
+
 }
 
 /*
@@ -209,8 +324,17 @@ header{
     }
     .flex-container{
         display:flex;
+        width: 100%;
+
+        @include sp{
+          display: block;
+        };
     }
     .works-box{
+      width: (100% / 3);
+      @include sp{
+        width: 100%;
+      };
         img{
             display: block;
             max-width: 100%;
@@ -231,6 +355,14 @@ header{
                 height: 100%;
                 color: $highlight;
                 background-color: rgba(0, 0, 0, .7);
+
+                @include tab{
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: rgba(0,0,0,0.3);
+                };
 
                 h3{
                     font-size: 1.6rem;
@@ -282,6 +414,9 @@ header{
     ul{
         margin-top: 60px;
         text-align: center;
+        @include sp{
+          margin-top: 50px;
+        };
 
         li{
             font-size: 3rem;
@@ -331,39 +466,4 @@ footer
     text-align: center;
     color: $highlight;
     background-color: $ink1;
-}
-
-
-// mobile
-@media (max-width: 768px) {
-    //ヘッター
-    header{
-        .businesscard{
-            flex-direction:column;
-        }
-    }
-
-    //スキル
-    #skills{
-        .container{
-            flex-direction:column;
-        }
-        .skill-box{
-            margin:10px 0px;
-        }
-    }
-
-    //ワーク
-    #works{
-        .flex-container{
-            flex-direction:column;
-        }
-        .works-box a .works-box-inner{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0,0,0,0.3);
-        }
-    }
 }
