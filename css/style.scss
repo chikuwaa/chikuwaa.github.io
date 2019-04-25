@@ -296,14 +296,109 @@ header{
           }
         }
         ul{
-            margin-left:20px;
+          margin-left:20px;
+          @include tab{
+            margin-left:0px;
+
+          };
         }
         li{
-            list-style: circle;
-            font-size: 16px;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 5px;
+          &::before{
+            content: "〇";
+            padding-right: 10px;
+            font-size: 13px;
+            display: block;
+            @include tab{
+              padding-right: 5px;
+
+            };
+          }
+          .tit{
+            font-size: 15px;
+            line-height: 1;
+            display: block;
+            width: 30%;
             @include sp{
               font-size: 14px;
+              width: 60%;
             };
+          }
+          .graph{
+            font-size: 15px;
+            line-height: 1.5;
+            box-sizing: border-box;
+            padding-left: 10px;
+            display: block;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            @include tab{
+              font-size: 14px;
+              line-height: 1.3;
+            };
+
+            &::after{
+              position: absolute;
+              z-index: -1;
+              background-color: $ink1;
+              width: 100%;
+              height: 100%;
+              display: block;
+              content: "";
+              top: 0px;
+              left: 0px;
+              transform: scale(0.9 , 1);
+              transform-origin: center left;
+              opacity: 0;
+              @include sp{
+                position: static;
+                height: 20px;
+              };
+            }
+
+            @include sp{
+              color: $ink2;
+            };
+            &.lv5{
+              width: 60%;
+              @include sp{
+                width: 100%;
+              };
+            }
+            &.lv4{
+              width: 50%;
+              @include sp{
+                width: 100%;
+                &::after{
+                  width: 75%;
+                }
+              };
+            }
+            &.lv3{
+              width: 40%;
+              @include sp{
+                width: 100%;
+                &::after{
+                  width: 50%;
+                }
+              };
+            }
+            &.on{
+              &::after{
+                opacity: 1;
+                transform: scale(1 , 1);
+                transition-delay: 0.5s;
+                transition-duration: 1s;
+              }
+            }
+
+          }
         }
     }
     .tab01{
