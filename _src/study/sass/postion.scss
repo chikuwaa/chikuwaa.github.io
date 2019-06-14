@@ -1,19 +1,22 @@
-body {
+@charset "UTF-8";
+body{
   position: relative;
-  border: 0px;
+  border:0px;
   padding: 0px;
-  margin: 0px;
-  padding-top: 30px; }
-
-.box01 {
+  margin:0px;
+  padding-top: 30px;
+}
+.box01{
+  // margin-top: 30px;
   width: 300px;
   padding: 30px;
   text-align: center;
   background-color: #ccc;
-  margin-bottom: 500px;
-  box-sizing: border-box; }
+  margin-bottom: 100vh;
+  box-sizing: border-box;
 
-.box02 {
+}
+.box02{
   margin-top: 30px;
   width: 300px;
   padding: 30px;
@@ -21,14 +24,15 @@ body {
   background-color: #eee;
   margin-bottom: 500px;
   box-sizing: border-box;
-  transition-duration: 2s; }
-  .box02.on {
-    background-color: #e6e6fa; }
+  transition-duration:2s;
 
-.win_center {
+  &.on{
+    background-color: #e6e6fa;
+  }
+}
+.win_center{
   border-top: solid 1px #000;
   position: absolute;
   width: 100%;
-  box-sizing: border-box; }
-
-/*# sourceMappingURL=postion.css.map */
+  box-sizing: border-box;
+}

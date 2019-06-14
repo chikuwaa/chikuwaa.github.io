@@ -3,6 +3,7 @@ var browserSync  = require('browser-sync');
 var cleanCSS = require('gulp-clean-css');
 var rename   = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
 var imagemin = require("gulp-imagemin");
 var imageminPngquant = require("imagemin-pngquant");
 var imageminMozjpeg = require("imagemin-mozjpeg");
@@ -10,7 +11,6 @@ var sass = require('gulp-sass');
 var postcss      = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var ejs = require("gulp-ejs");
-// var cmq = require('gulp-combine-media-queries');//@media
 var plumber = require('gulp-plumber');
 // var changed = require('gulp-changed');
 
@@ -45,16 +45,12 @@ gulp.task('bs-reload' , function (done) {
   done();
 });
 
-// gulp.task('mincss', function() {
-//   return gulp.src(src_dir+"css/**/*.css")
-//     .pipe(cleanCSS())
-//     .pipe(rename({ suffix: '.min' }))
-//     .pipe(gulp.dest(dest_dir+'css/'));
-// });
-
 gulp.task('minjs', function() {
   return gulp.src(src_dir+"js/**/*.js")
     .pipe(plumber())
+    .pipe(babel({
+      "presets": ["@babel/preset-env"]
+    }))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(dest_dir+'js/'));
@@ -75,14 +71,6 @@ gulp.task('sass', function() {
     .pipe(cleanCSS())
     .pipe(gulp.dest( dest_dir+'css' ));
 });
-
-// gulp.task('cmq', function () {
-//   gulp.src( dest_dir+'css/*.css')
-//     .pipe(cmq({
-//       log: false
-//     }))
-//     .pipe(gulp.dest( dest_dir+'css'));
-// });
 
 gulp.task( "ejs", function () {
     return gulp.src([ src_dir+"ejs/**/*.ejs", '!' + src_dir+"ejs/**/_*.ejs"])

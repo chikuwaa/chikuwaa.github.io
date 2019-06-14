@@ -1,0 +1,41 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-changed": "^4.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-ejs": "^4.0.0",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "gulp-babel": "^8.0.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chikuwaa/chikuwaa.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chikuwaa/chikuwaa.github.io/issues"
+  },
+  "homepage": "https://github.com/chikuwaa/chikuwaa.github.io#readme"
+}
