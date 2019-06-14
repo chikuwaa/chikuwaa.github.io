@@ -26,8 +26,8 @@ var imageminOption = [
   imagemin.optipng(),
   imagemin.svgo()
 ];
-var src_dir = "./_src/study/";
-var dest_dir = "./study/";
+var src_dir = "./_src/";
+var dest_dir = "./";
 
 
 gulp.task('browser-sync', function(done) {
