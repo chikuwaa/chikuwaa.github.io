@@ -1,0 +1,32 @@
+@charset "UTF-8";
+.sp {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .sp {
+    display: block;
+  }
+}
+
+/*
+ページ全体--------------------*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  letter-spacing: .1em;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1.3rem;
+  }
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlLmNzcyIsIi4uLy4uL19zcmMvc2Fzcy9zdHlsZS5zY3NzIiwiLi4vLi4vX3NyYy9zYXNzL19jb21tb24uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNHaEI7RUFDRSxhQUFhO0FERGY7O0FFZUU7RURmRjtJQUdJLGNBQWM7RURFaEI7QUFDRjs7QUNBQTswQkRHMEI7QUNEMUI7RUFFSSxnQkFBZ0I7QURFcEI7O0FDQUE7RUFFSSxxR0NoQmlGO0VEaUJqRixpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLG9CQUFvQjtFQUNwQixpQkFBaUI7RUFDakIsY0FBYztBREVsQjs7QUVORTtFREhGO0lBVU0saUJBQWlCO0VESXJCO0FBQ0YiLCJmaWxlIjoic3R5bGUuY3NzIn0= */
