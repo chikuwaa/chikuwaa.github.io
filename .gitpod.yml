@@ -1,0 +1,12 @@
+# ワークスペースを実行するDockerイメージ デフォルト:gitpod/workspace-full
+image:
+  file: .gitpod.Dockerfile
+
+# 起動時に実行するコマンド
+tasks:
+  - init: npm install
+
+# 起動時に開くポート
+ports:
+  - port: 8000
+    onOpen: open-preview
