@@ -15,6 +15,7 @@
     "imagemin:build": "node imagemin.js",
     "watch:img": "chokidar \"_src/images/**/*\" --command \"node imagemin.js\" --initial",
     "start:server": "browser-sync start -s _dist -w _dist/*.html _dist/css/*.css _dist/js/*.js",
+    "copy:all": "cpx \"_dist/**/*\" ./",
     "watch:all": "run-p watch:html watch:inc watch:css+prefix watch:js watch:img start:server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

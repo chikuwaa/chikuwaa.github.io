@@ -7,7 +7,7 @@ tasks:
 
 # 起動時に開くポート
 ports:
-  - port: 8000
+  - port: 3000
     onOpen: open-preview
 
 vscode:
@@ -21,3 +21,4 @@ vscode:
     - christian-kohler.path-intellisense@1.4.2:QnOrf5fk6KiVaQs4cNEP+w==
     - QassimFarid.ejs-language-support@0.0.1:w4TbdGAviNNiyP8nOqfKrg==
     - abusaidm.html-snippets@0.2.1:7b7Vkkp6Lem9WOqKCYMq2w==
+    - 1natsu.insert-br-tag@1.0.0:H+UnL37I41pzuycBeqp4Sg==
