@@ -26,3 +26,19 @@ $sp: 480px;  // スマホ
 @mixin eng02{
     font-family: 'Cedarville Cursive', cursive;
 }
+@mixin dn{
+    display: none;
+}
+@mixin ma{
+    margin: 0 auto;
+}
+@mixin f($size,$base:16){
+    font-size: ($size / ($base * 0.625)) + rem
+}
+@mixin wp($full,$width){
+    width: percentage($width / $full);
+}
+@mixin wpm($full,$width){
+    width: percentage($width / $full);
+    max-width: $width;
+}

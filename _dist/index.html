@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>isobeage - げそ</title>
+        <title>げそ</title>
         <meta name="description" content="げそです。Web制作・同人サイト制作など請け負っております。">
         <meta name="keywords" content="Web, ポートフォリオ, Web制作 ,同人サイト制作 ,イラスト制作">
         <meta http-equiv="Content-Script-Type" content="text/javascript">
@@ -15,18 +15,20 @@
         <script src="https://kit.fontawesome.com/5d472d7137.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/style.css">
     </head>
-    <body>
-
-<div class="openingArea">
+    <body class="on">
+    <div class="wrap">
+<div class="openingArea on">
     <div class="lightCord"></div>
     <div class="light">
-        <img src="./images/img01.png" alt="light" srcset="./images/img01.png 1x,./images/img01@2x.png 2x">
+        <img src="./images/img01.png" alt="light" srcset="./images/img01.png 1x,./images/img01@2x.png 2x" class="off">
+        <img src="./images/img01_on.png" alt="light" srcset="./images/img01_on.png 1x,./images/img01_on@2x.png 2x" class="on">
         <h1>geso</h1>
     </div>
-    <a href="javascript:void(0)">Scroll<i class="fas fa-arrow-right fa-fw"></i><i class="fas fa-arrow-right fa-fw"></i></a>
-    <a href="#top">or Skip?</a>
+    <a href="javascript:void(0)" class="scrollBtn off">Scroll<i class="fas fa-arrow-right fa-fw"></i><i class="fas fa-arrow-right fa-fw"></i></a>
+    <a href="#top" class="skipBtn off">or Skip?</a>
 </div>
-<header>
+<header class="on">
+    <div class="header_in">
     <nav>
         <div class="current"></div>
         <ul>
@@ -45,8 +47,9 @@
         </li>
         <li><a href="mailto:k.andar.m.p@gmail.com"><i class="fas fa-envelope"></i></a></li>
     </ul>
+    </div>
 </header>
-<main>
+<main class="on">
     <div class="sec01" id="top">
         <p class="txt_com01">
         げそと申します。<br>絵と漫画を描くのが好きな<br>HTMLコーダーです。
@@ -163,6 +166,7 @@
         <footer>
             <small class="">&copy 2017-2020 geso, All Rights Reserved.</small>
         </footer>
+        </div>
         <script src="./js/jquery.min.js"></script>
         <script src="./js/common.js"></script>
     </body>

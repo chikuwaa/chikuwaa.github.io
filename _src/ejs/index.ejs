@@ -5,17 +5,18 @@
     var title = '';
 %>
 <%- include(root + '../_inc/_head',{root,thisPage,title}) %>
-<div class="openingArea">
+<div class="openingArea on">
     <div class="lightCord"></div>
     <div class="light">
-        <img src="<%= root %>images/img01.png" alt="light" srcset="<%= root %>images/img01.png 1x,<%= root %>images/img01@2x.png 2x">
+        <img src="<%= root %>images/img01.png" alt="light" srcset="<%= root %>images/img01.png 1x,<%= root %>images/img01@2x.png 2x" class="off">
+        <img src="<%= root %>images/img01_on.png" alt="light" srcset="<%= root %>images/img01_on.png 1x,<%= root %>images/img01_on@2x.png 2x" class="on">
         <h1>geso</h1>
     </div>
-    <a href="javascript:void(0)">Scroll<i class="fas fa-arrow-right fa-fw"></i><i class="fas fa-arrow-right fa-fw"></i></a>
-    <a href="#top">or Skip?</a>
+    <a href="javascript:void(0)" class="scrollBtn off">Scroll<i class="fas fa-arrow-right fa-fw"></i><i class="fas fa-arrow-right fa-fw"></i></a>
+    <a href="#top" class="skipBtn off">or Skip?</a>
 </div>
 <%- include(root + '../_inc/_header',{root,thisPage}) %>
-<main>
+<main class="on">
     <div class="sec01" id="top">
         <p class="txt_com01">
         げそと申します。<br>絵と漫画を描くのが好きな<br>HTMLコーダーです。
