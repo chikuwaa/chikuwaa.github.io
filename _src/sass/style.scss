@@ -16,8 +16,10 @@ html
 body
 {
     font-family: $font;
-    font-size: 1.9rem;
-    line-height: 1.6;
+    @include f(19);
+    @include lh(19,31)
+    // font-size: 1.9rem;
+    // line-height: 1.6;
     letter-spacing: .1em;
     background-color: $key01;
     color: $key02;
@@ -59,10 +61,89 @@ header{
     .header_in{
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        // align-items: center;
+        align-items: flex-end;
+
+        nav{
+            @include f(20);
+            line-height: 2.5;
+            position: relative;
+
+            .current{
+                border: solid 9px transparent;
+                border-left: solid 12px $key01;
+                position: absolute;
+                right: calc(100% + 10px);
+                top: 0px;
+                transform: translateY(80%);
+            }
+            a{
+                color: $key01;
+                text-decoration: none;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .contentsLst{
+        list-style-type: none;
+
+        li{
+            text-align: right;
+            @include f(40);
+            line-height: 1;
+            a{
+                color: $key01;
+                text-decoration: none;
+
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
+        }
+        li:nth-child(1){
+            @include f(42);
+            @include mb(5)
+        }
+        li:nth-child(2){
+            @include f(45);
+        }
     }
 }
-
+/*
+共通パーツ-------------------------*/
+.sec_com{
+    min-height: 100vh;
+}
+.tit_com01{
+    @include eng02;
+    @include f(50);
+    font-weight: 100;
+    letter-spacing: -0.15rem;
+    text-align: center;
+    @include lh(50,94);
+    margin-bottom: 30px;
+}
+.txt_com01{
+    @include f(23);
+    text-align: center;
+    @include lh(23,37);
+    margin-bottom: 40px;
+}
+.txt_com02{
+    margin-bottom: 40px;
+}
+.box_com01{
+    box-sizing: border-box;
+    @include w;
+    border: solid 1px $key01;
+    background-color: #fff;
+    padding: 15px;
+    @include f(15);
+    @include lh(15,24);
+}
 /*
 個別-------------------------*/
 .openingArea{
@@ -111,6 +192,7 @@ header{
         }
         .light{
             @include wpm(1920,283);
+            @include mb(70);
             position: relative;
             h1{
                 color:$key01;
@@ -121,12 +203,44 @@ header{
                 width: 100%;
                 left: 0px;
                 @include eng02;
-                @include f(50)
+                @include f(50);
+                font-weight: 100;
             }
         }
     }
 }
+.sec02{
+    &__in{
+        .skill__{
+            &tit{
+                @include f(23);
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
 
+                &::before,&::after{
+                    border-bottom: solid 1px $key01;
+                    content: "";
+                    @include db;
+                    flex-grow: 1;
+                }
+                &::after{
+                    margin-left: 5px;
+                }
+                &::before{
+                    margin-right: 5px;
+                }
+            }
+            &txt{
+                .txt{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
 //JS操作
 .off{
     @include dn;
