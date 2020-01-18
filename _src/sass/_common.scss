@@ -20,6 +20,11 @@ $sp: 480px;  // スマホ
     @content;
   }
 }
+@mixin mq($mqsize) {
+  @media (max-width: ($mqsize)) {
+    @content;
+  }
+}
 @mixin eng01{
     font-family: 'Bellefair', serif;
 }
