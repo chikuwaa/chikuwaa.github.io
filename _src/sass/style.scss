@@ -17,8 +17,7 @@ html
 {
     font-size: 62.5%;
 }
-body
-{
+body{
     font-family: $font;
     @include f(19);
     @include lh(19,31)
@@ -33,11 +32,18 @@ body
     }
 
     &.on{
+        transition: background-color ease 0ms 500ms ,
+                    color ease 0ms 500ms;
         background-color: $key02;
         color: $key01;
 
         .sec_com{
             opacity: 1;
+            transition: opacity ease 0ms 500ms;
+        }
+        .sec04{
+            opacity: 1;
+            transition: opacity ease 0ms 500ms;
         }
         header{
             display: block;
@@ -50,11 +56,14 @@ body
         }
         .lightCord{
             background-color: $key01;
+            transition: opacity ease 0ms 500ms;
         }
         .light{
             @include wpm(1920,283);
             @include mb(70);
             position: relative;
+            transition: all ease 0ms 500ms;
+
             @include pc{
                 @include wpm(1024,283)
             }
@@ -63,6 +72,7 @@ body
                 @include mb(35);
             }
             h1{
+transition: all ease 0ms 500ms;
                 color:$key01;
                 display: inherit;
                 text-align: center;
@@ -298,6 +308,7 @@ footer{
     min-height: 100vh;
     @include mb(200);
     opacity: 0;
+
     @include sp{
         @include mb(100);
     }
@@ -354,6 +365,7 @@ footer{
 /*
 個別-------------------------*/
 .openingArea{
+    scroll-snap-align: start;
     .lightCord{
         width: 4px;
         height: 150vh;
@@ -549,6 +561,7 @@ footer{
     }
 }
 .sec04{
+    opacity: 0;
     padding-bottom: 150px;
     position: relative;
     .caption{
@@ -588,3 +601,11 @@ footer{
 //     display: inherit;
 //     opacity: 1;
 // }
+
+//スクロールバー非表示
+html::-webkit-scrollbar{
+ display:none;
+}
+html {
+ -ms-overflow-style:none;
+}
