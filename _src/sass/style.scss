@@ -32,21 +32,22 @@ body{
     }
 
     &.on{
-        transition: background-color ease 0ms 500ms ,
-                    color ease 0ms 500ms;
+        transition: background-color ease 0ms 1000ms ,
+                    color ease 0ms 1000ms;
         background-color: $key02;
         color: $key01;
 
         .sec_com{
             opacity: 1;
-            transition: opacity ease 0ms 500ms;
+            transition: opacity ease 0ms 1000ms;
         }
         .sec04{
             opacity: 1;
-            transition: opacity ease 0ms 500ms;
+            transition: opacity ease 0ms 1000ms;
         }
         header{
             display: block;
+            transition: display ease 0ms 1000ms;
         }
         .skipBtn{
             display: none;
@@ -56,13 +57,15 @@ body{
         }
         .lightCord{
             background-color: $key01;
-            transition: opacity ease 0ms 500ms;
+            height: 45vh;
+            transition: background-color ease 0ms 1000ms ,
+                        height ease 0ms 1000ms;
         }
         .light{
             @include wpm(1920,283);
             @include mb(70);
             position: relative;
-            transition: all ease 0ms 500ms;
+            transition: all ease 0ms 1000ms;
 
             @include pc{
                 @include wpm(1024,283)
@@ -72,9 +75,8 @@ body{
                 @include mb(35);
             }
             h1{
-transition: all ease 0ms 500ms;
                 color:$key01;
-                display: inherit;
+                // display: inherit;
                 text-align: center;
                 position: absolute;
                 bottom: 0px;
@@ -86,12 +88,6 @@ transition: all ease 0ms 500ms;
                 @include sp{
                     @include f(36)
                 }
-            }
-            .off{
-                display: none;
-            }
-            .on{
-                display: block;
             }
         }
     }
@@ -163,10 +159,20 @@ header{
                 right: calc(100% + 10px);
                 top: 0px;
                 transform: translateY(80%);
+                transition: top ease 500ms;
                 @include pc{
                     display: none;
                 }
 
+                &.skl{
+                    top: 50px;
+                }
+                &.price{
+                    top: 104px;
+                }
+                &.con{
+                    top: 152px;
+                }
             }
             .sp_menu{
                 display: none;
@@ -418,11 +424,12 @@ footer{
     .skipBtn{
         position: fixed;
         bottom: 0px;
-        left: calc(50% + 30px );
+        left: calc(50% + 60px );
         @include eng01;
         color:$key02;
         text-decoration: none;
         @include f(31);
+        cursor: pointer;
         @include sp{
             @include f(24);
         }
