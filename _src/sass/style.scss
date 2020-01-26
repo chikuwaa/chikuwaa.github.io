@@ -46,8 +46,11 @@ body{
             transition: opacity ease 0ms 1000ms;
         }
         header{
-            display: block;
-            transition: display ease 0ms 1000ms;
+            // display: block;
+            visibility: visible;
+            opacity: 1;
+            transition: opacity ease 0ms 1000ms ,
+                        visibility ease 0ms 1000ms ;
         }
         .skipBtn{
             display: none;
@@ -57,9 +60,12 @@ body{
         }
         .lightCord{
             background-color: $key01;
-            height: 45vh;
+            height: 30vh;
             transition: background-color ease 0ms 1000ms ,
                         height ease 0ms 1000ms;
+            @include sp{
+                height: 15vh;
+            }
         }
         .light{
             @include wpm(1920,283);
@@ -130,7 +136,9 @@ header{
     left: 50%;
     transform: translateX(-50%);
     z-index:10;
-    display: none;
+    // display: none;
+    visibility: hidden;
+    opacity: 0;
     @include pc{
         @include w;
         box-sizing: border-box;
@@ -226,7 +234,7 @@ header{
             @include f(40);
             line-height: 1;
             @include pc{
-                display: none;
+                // display: none;
                 @include f(29);
                 background-color: #fff;
                 border-radius: 6px;
@@ -235,6 +243,9 @@ header{
                 text-align: center;
                 cursor: pointer;
                 margin-top: 10px;
+                position: absolute;
+                visibility: hidden;
+                transition: bottom ease 500ms ,visibility ease 500ms;
             }
             a{
                 color: $key01;
@@ -255,7 +266,9 @@ header{
             &.sp_contact{
                 display: none;
                 @include pc{
+                    position: relative;
                     display: block;
+                    visibility: visible;
                 }
 
             }
@@ -265,12 +278,16 @@ header{
             @include mb(5)
             @include pc{
                 @include f(35)
+                bottom: 0px;
+                // bottom:-150px;
             }
         }
         li:nth-child(2){
             @include f(45);
             @include pc{
                 @include f(34)
+                // bottom:-100px;
+                bottom:0px;
             }
 
             .pc{
@@ -282,6 +299,37 @@ header{
                 display: none;
                 @include pc{
                     display: inherit;
+                }
+            }
+        }
+        li:nth-child(3){
+            @include pc{
+                // bottom:-50px;
+                bottom:0px;
+            }
+        }
+
+        &.opened{
+            li{
+                @include pc{
+                    // display: block;
+                    visibility: visible;
+                    // bottom: 0px;
+                }
+            }
+            li:nth-child(1){
+                @include pc{
+                    bottom: 150px;
+                }
+            }
+            li:nth-child(2){
+                @include pc{
+                    bottom:100px;
+                }
+            }
+            li:nth-child(3){
+                @include pc{
+                    bottom:50px;
                 }
             }
         }
@@ -593,7 +641,8 @@ footer{
     .sp_contact_link{
         @include pc{
             text-decoration: underline;
-
+            cursor: pointer;
+            display: inline-block;
         }
     }
 }

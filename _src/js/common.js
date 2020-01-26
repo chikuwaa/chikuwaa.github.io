@@ -7,7 +7,6 @@ $(function(){
     var l_skills;
     var l_price;
     var l_contact;
-    // var position = top - ( $(window).height() / 2 );  // 発火させたい位置
 
     //スムーススクロール
     $('a[href^="#"]').click(function(){
@@ -19,6 +18,23 @@ $(function(){
         return false;
     });
 
+    //SPメニュー
+    if (matchMedia('(max-width: 768px)').matches) {
+        // ウィンドウサイズが768px以下のとき
+        $(".sp_menu").on('click',function(){
+            var menu_item = $(this).prev('ul');
+            menu_item.slideToggle('slow');
+            $(this).toggleClass("opened");
+        });
+
+        $(".sp_contact,.sp_contact_link").on('click',function(){
+            $(".contactsLst").toggleClass("opened");
+        });
+        $("nav a").on('click',function(){
+            $("nav ul").slideToggle('slow');
+            $(".sp_menu").removeClass("opened");
+        });
+    }
 
     $(window).scroll(function(){
         //スクロールアニメーション
@@ -46,29 +62,46 @@ $(function(){
         }
 
         //current移動
-        if( is_animated == true){
-            // console.log("a");
-            l_top = $('#top').offset().top  - position;
-            l_skills = $('#skills').offset().top - position;
-            l_price = $('#price').offset().top - position;
-            l_contact = $('#contact').offset().top - position;
+        if (matchMedia('(max-width: 768px)').matches) {
+        // ウィンドウサイズが768px以下のとき
+        }else{
+            if( is_animated == true){
+                // console.log("a");
+                l_top = $('#top').offset().top  - position;
+                l_skills = $('#skills').offset().top - position;
+                l_price = $('#price').offset().top - position;
+                l_contact = $('#contact').offset().top - position;
 
-            if( $(window).scrollTop() > l_top && $(window).scrollTop() < l_skills ){
-                // console.log("b");
-                $('header .current').removeClass("skl price con");
-            }else if( $(window).scrollTop() > l_skills && $(window).scrollTop() < l_price ){
-                // console.log("b");
-                $('header .current').removeClass("skl price con");
-                $('header .current').addClass("skl");
-            }else if( $(window).scrollTop() > l_price && $(window).scrollTop() < l_contact ){
-                $('header .current').removeClass("skl price con");
-                $('header .current').addClass("price");
-            }else if( $(window).scrollTop() > l_contact ){
-                $('header .current').removeClass("skl price con");
-                $('header .current').addClass("con");
+                if( $(window).scrollTop() > l_top && $(window).scrollTop() < l_skills ){
+                    $('header .current').removeClass("skl price con");
+                }else if( $(window).scrollTop() > l_skills && $(window).scrollTop() < l_price ){
+                    $('header .current').removeClass("skl price con");
+                    $('header .current').addClass("skl");
+                }else if( $(window).scrollTop() > l_price && $(window).scrollTop() < l_contact ){
+                    $('header .current').removeClass("skl price con");
+                    $('header .current').addClass("price");
+                }else if( $(window).scrollTop() > l_contact ){
+                    $('header .current').removeClass("skl price con");
+                    $('header .current').addClass("con");
+                }
             }
         }
         
+    });
+
+    $('.skipBtn').on('click',function(){
+        // console.log("a");
+        var speed = 500;
+        var scroll_posi = top + 10;
+        $("html, body").animate({scrollTop:scroll_posi}, speed, "swing");
+        return false;
+    });
+    $('.scrollBtn').on('click',function(){
+        console.log("a");
+        var speed = 1500;
+        var scroll_posi = top + 10;
+        $("html, body").animate({scrollTop:scroll_posi}, speed, "swing");
+        return false;
     });
 });
 
