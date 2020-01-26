@@ -1,7 +1,7 @@
 $(function(){
     var is_animated = false;
     var current_posi = "top";
-    var position = $(window).height() / 2;  // 発火させたい位置
+    var position = ( $(window).height() / 3 ) * 2;  // 発火させたい位置
     var top = $('.light').offset().top - position;
     var l_top;
     var l_skills;

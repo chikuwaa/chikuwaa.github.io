@@ -21,8 +21,6 @@ body{
     font-family: $font;
     @include f(19);
     @include lh(19,31)
-    // font-size: 1.9rem;
-    // line-height: 1.6;
     letter-spacing: .1em;
     background-color: $key01;
     color: $key02;
@@ -46,7 +44,6 @@ body{
             transition: opacity ease 0ms 1000ms;
         }
         header{
-            // display: block;
             visibility: visible;
             opacity: 1;
             transition: opacity ease 0ms 1000ms ,
@@ -60,12 +57,9 @@ body{
         }
         .lightCord{
             background-color: $key01;
-            height: 30vh;
+            height: 45vh;
             transition: background-color ease 0ms 1000ms ,
                         height ease 0ms 1000ms;
-            @include sp{
-                height: 15vh;
-            }
         }
         .light{
             @include wpm(1920,283);
@@ -107,8 +101,6 @@ main{
     width: 100%;
     max-width: 535px;
     @include ma;
-    // position: relative;
-    // z-index:1;
     box-sizing: border-box;
     @include tab{
         max-width: none;
@@ -136,7 +128,6 @@ header{
     left: 50%;
     transform: translateX(-50%);
     z-index:10;
-    // display: none;
     visibility: hidden;
     opacity: 0;
     @include pc{
@@ -149,7 +140,6 @@ header{
     .header_in{
         display: flex;
         justify-content: space-between;
-        // align-items: center;
         align-items: flex-end;
 
         nav{
@@ -234,7 +224,6 @@ header{
             @include f(40);
             line-height: 1;
             @include pc{
-                // display: none;
                 @include f(29);
                 background-color: #fff;
                 border-radius: 6px;
@@ -279,14 +268,12 @@ header{
             @include pc{
                 @include f(35)
                 bottom: 0px;
-                // bottom:-150px;
             }
         }
         li:nth-child(2){
             @include f(45);
             @include pc{
                 @include f(34)
-                // bottom:-100px;
                 bottom:0px;
             }
 
@@ -304,7 +291,6 @@ header{
         }
         li:nth-child(3){
             @include pc{
-                // bottom:-50px;
                 bottom:0px;
             }
         }
@@ -312,9 +298,7 @@ header{
         &.opened{
             li{
                 @include pc{
-                    // display: block;
                     visibility: visible;
-                    // bottom: 0px;
                 }
             }
             li:nth-child(1){
@@ -646,17 +630,6 @@ footer{
         }
     }
 }
-//JS操作
-// .off{
-//     @include dn;
-// }
-// .off02{
-//     opacity: 0;
-// }
-// .on{
-//     display: inherit;
-//     opacity: 1;
-// }
 
 //スクロールバー非表示
 html::-webkit-scrollbar{
