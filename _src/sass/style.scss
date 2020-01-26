@@ -1,42 +1,15 @@
 @charset "UTF-8";
-/* Google Fonts用のCSSを読み込み */
-@import 'https://fonts.googleapis.com/css?family=Abel';
-
-/*
-変数定義--------------------*/
-$ja_font : '游ゴシック', YuGothic, 'メイリオ', Verdana, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-$background : #ffffff;
-$ink1 : #2c2a96;
-$ink2 : #000000;
-$highlight : #ffffff;
-
-/*
-デバイス対応--------------------*/
-$pc: 1024px; // PC
-$tab: 768px; // タブレット
-$sp: 480px;  // スマホ
-
-@mixin pc {
-  @media (max-width: ($pc)) {
-    @content;
-  }
+@import "common";
+.pc{
+    @include pc{
+        display: none;
+    }
 }
-@mixin tab {
-  @media (max-width: ($tab)) {
-    @content;
-  }
-}
-@mixin sp {
-  @media (max-width: ($sp)) {
-    @content;
-  }
-}
-
 .sp{
   display: none;
   @include sp{
-    display: block;
-  };
+    display: inherit;
+  }
 }
 /*
 ページ全体--------------------*/
@@ -44,521 +17,651 @@ html
 {
     font-size: 62.5%;
 }
-body
-{
-    font-family: $ja_font;
-    font-size: 1.4rem;
-    line-height: 1.6;
+body{
+    font-family: $font;
+    @include f(19);
+    @include lh(19,31)
+    // font-size: 1.9rem;
+    // line-height: 1.6;
     letter-spacing: .1em;
-    color: $ink2;
-    background-color: $background;
-    max-width: 1024px;
-    margin: 0 auto;
+    background-color: $key01;
+    color: $key02;
 
     @include sp{
-      font-size: 1.3rem;
-    };
+        @include f(14);
+    }
+
+    &.on{
+        transition: background-color ease 0ms 1000ms ,
+                    color ease 0ms 1000ms;
+        background-color: $key02;
+        color: $key01;
+
+        .sec_com{
+            opacity: 1;
+            transition: opacity ease 0ms 1000ms;
+        }
+        .sec04{
+            opacity: 1;
+            transition: opacity ease 0ms 1000ms;
+        }
+        header{
+            // display: block;
+            visibility: visible;
+            opacity: 1;
+            transition: opacity ease 0ms 1000ms ,
+                        visibility ease 0ms 1000ms ;
+        }
+        .skipBtn{
+            display: none;
+        }
+        .scrollBtn{
+            display: none;
+        }
+        .lightCord{
+            background-color: $key01;
+            height: 30vh;
+            transition: background-color ease 0ms 1000ms ,
+                        height ease 0ms 1000ms;
+            @include sp{
+                height: 15vh;
+            }
+        }
+        .light{
+            @include wpm(1920,283);
+            @include mb(70);
+            position: relative;
+            transition: all ease 0ms 1000ms;
+
+            @include pc{
+                @include wpm(1024,283)
+            }
+            @include sp{
+                @include wpm(360,175)
+                @include mb(35);
+            }
+            h1{
+                color:$key01;
+                // display: inherit;
+                text-align: center;
+                position: absolute;
+                bottom: 0px;
+                width: 100%;
+                left: 0px;
+                @include eng02;
+                @include f(50);
+                font-weight: 100;
+                @include sp{
+                    @include f(36)
+                }
+            }
+        }
+    }
 }
-section
-{
-    padding: 60px 0;
-    @include sp{
-      padding: 50px 0;
-    };
+img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
 }
-section .container
-{
-    width: 90%;
-}
-section h2
-{
-    font-size: 3.2rem;
-    @include sp{
-      font-size: 2.4rem;
-    };
+main{
+    width: 100%;
+    max-width: 535px;
+    @include ma;
+    // position: relative;
+    // z-index:1;
+    box-sizing: border-box;
+    @include tab{
+        max-width: none;
+        padding: 0px 20px;
+    }
 }
 a{
+    color: $key01;
     text-decoration: none;
-    color: $ink2;
-}
-a:visited{
-    color: $ink2;
-}
-a:hover{
-    color: #611B82;
-}
-a:active{
-    color: #16d6e0;
-}
-.text-center{
-    text-align: center;
-}
 
-.block-center,
-section .container,
-#skills i
-{
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
+    &:hover{
+        text-decoration: underline;
+    }
 }
-
-.abel,
-section h2,
-#skills h3,
-#works .works-box a .works-box-inner .button-browse
-{
-    font-family: 'Abel', sans-serif;
-}
-
-.uppercase,
-section h2,
-#skills h3,
-#works .works-box a .works-box-inner .button-browse
-{
-    text-transform: uppercase;
+.wrap{
+    overflow: hidden;
 }
 
 /*
-ヘッター--------------------*/
-.button-contact
-{
-    font-size: 20px;
-    line-height: 0;
-    display: block;
-    float: right;
-    width: 20px;
-    height: 20px;
-    margin: 20px 20px 0 0;
-    padding: 10px;
-    text-align: center;
-    color: $ink1;
-    border: 2px solid $ink1;
-}
-.button-contact:visited
-{
-    color: $ink1;
-}
-.button-contact:hover,
-.button-contact:active
-{
-    color: $highlight;
-    background-color: $ink1;
-}
-
+header--------------------*/
 header{
-    border: 2px solid $ink1;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    .profile{
-        clear: both;
-        width: 60%;
-        margin: 0 auto;
-        padding: 60px 0px 70px 0px;
-        @include sp{
-          width: 70%;
-          padding: 10px 0px 50px 0px;
-        };
-    }
-    .businesscard{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-bottom: 30px;
-        @include tab{
-          display: block;
-          text-align: center;
-        };
-    }
-    .site-title{
-        font-size: 1.8rem;
-        line-height: normal;
-        @include sp{
-          font-size: 1.5rem;
-        };
-        span{
-            font-size: 4.2rem;
-            display: block;
-            color: $ink1;
-            @include sp{
-              font-size: 2.8rem;
-            };
-        }
-    }
-    p{
-        font-size: 1.6rem;
-        @include sp{
-          font-size: 1.4rem;
-        };
-    }
-}
-
-/*
-スキル--------------------*/
-#skills
-{
-    background-color: $ink1;
-    padding-bottom: 10px;
-
-    .skill_tab{
-      display: flex;
-      justify-content: space-between;
-      margin: 0px 10px;
-
-      li{
-        width: (100% / 3);
-        list-style: none;
+    position: fixed;
+    @include wpm(1920,1270);
+    bottom:100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index:10;
+    // display: none;
+    visibility: hidden;
+    opacity: 0;
+    @include pc{
+        @include w;
         box-sizing: border-box;
-
-        span{
-          cursor: pointer;
-          display: block;
-          width: 100%;
-          background-color:$ink1;
-          text-align: center;
-          padding: 10px 0px;
-          border: solid 1px $highlight;
-          box-sizing: border-box;
-
-          &.on{
-            background-color:$highlight;
-          }
-        }
-
-        .skill-icon{
-          display: inline-block;
-          font-size: 3.5rem;
-          color:$highlight;
-          vertical-align: middle;
-          @include tab{
-            font-size: 2.4rem;
-
-          };
-        }
-        h3{
-          font-size: 2.4rem;
-          color:$highlight;
-          display: inline-block;
-          vertical-align: middle;
-          @include tab{
-            font-size: 1.8rem;
-
-          };
-          @include sp{
-            display: none;
-          };
-        }
-        .on{
-          .skill-icon{
-            color:$ink1;
-          }
-          h3{
-            color: $ink1;
-          }
-        }
-      }
+        padding: 0px 20px;
+        bottom: 25px;
     }
-    h2{
-        margin-bottom: 60px;
-        color:$highlight;
-        @include sp{
-          margin-bottom: 50px;
-        };
-    }
-    .skill-box{
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
-        -webkit-flex: 1;
-                flex: 1;
-        margin: 0px 10px;
-        padding: 50px 20px;
-        background-color: $background;
-        display: none;
-        @include sp{
-          padding: 25px 20px;
-        };
 
-        .tab_tit{
-          font-size: 18px;
-          text-align: center;
-          font-weight: bold;
-          margin-bottom: 10px;
-        }
-        p{
-          font-size: 16px;
-          @include sp{
-            font-size: 14px;
-          };
-          a{
-            text-decoration: underline;
-          }
-        }
-        ul{
-          margin-left:20px;
-          @include tab{
-            margin-left:0px;
+    .header_in{
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+        align-items: flex-end;
 
-          };
-        }
-        li{
-          list-style: none;
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: flex-start;
-          margin-bottom: 5px;
-          &::before{
-            content: "〇";
-            padding-right: 10px;
-            font-size: 13px;
-            display: block;
-            @include tab{
-              padding-right: 5px;
-
-            };
-          }
-          .tit{
-            font-size: 15px;
-            line-height: 1;
-            display: block;
-            width: 30%;
-            @include sp{
-              font-size: 14px;
-              width: 60%;
-            };
-          }
-          .graph{
-            font-size: 15px;
-            line-height: 1.5;
-            box-sizing: border-box;
-            padding-left: 10px;
-            display: block;
-            color: #fff;
+        nav{
+            @include f(20);
+            line-height: 2.5;
             position: relative;
-            z-index: 1;
-            @include tab{
-              font-size: 14px;
-              line-height: 1.3;
-            };
-
-            &::after{
-              position: absolute;
-              z-index: -1;
-              background-color: $ink1;
-              width: 100%;
-              height: 100%;
-              display: block;
-              content: "";
-              top: 0px;
-              left: 0px;
-              transform: scale(0.9 , 1);
-              transform-origin: center left;
-              opacity: 0;
-              @include sp{
-                position: static;
-                height: 20px;
-              };
-            }
-
             @include sp{
-              color: $ink2;
-            };
-            &.lv5{
-              width: 60%;
-              @include sp{
-                width: 100%;
-              };
-            }
-            &.lv4{
-              width: 50%;
-              @include sp{
-                width: 100%;
-                &::after{
-                  width: 75%;
-                }
-              };
-            }
-            &.lv3{
-              width: 40%;
-              @include sp{
-                width: 100%;
-                &::after{
-                  width: 50%;
-                }
-              };
-            }
-            &.on{
-              &::after{
-                opacity: 1;
-                transform: scale(1 , 1);
-                transition-delay: 0.5s;
-                transition-duration: 1s;
-              }
+                @include f(16);
             }
 
-          }
-        }
-    }
-    .tab01{
-      display: block;
-    }
-
-}
-
-/*
-ワーク--------------------*/
-#works{
-    border: 2px solid $ink1;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    h2{
-        margin-bottom: 50px;
-    }
-    .flex-container{
-        display:flex;
-        width: 100%;
-
-        @include sp{
-          display: block;
-        };
-    }
-    .works-box{
-      width: (100% / 3);
-      @include sp{
-        width: 100%;
-      };
-        img{
-            display: block;
-            max-width: 100%;
-        }
-        a{
-            position: relative;
-            display: block;
-            height: 100%;
-
-            background-color:$ink1;
-            color:$highlight;
-
-            .works-box-inner{
+            .current{
+                border: solid 9px transparent;
+                border-left: solid 12px $key01;
                 position: absolute;
-                top: 0;
-                left: 0;
+                right: calc(100% + 10px);
+                top: 0px;
+                transform: translateY(80%);
+                transition: top ease 500ms;
+                @include pc{
+                    display: none;
+                }
+
+                &.skl{
+                    top: 50px;
+                }
+                &.price{
+                    top: 104px;
+                }
+                &.con{
+                    top: 152px;
+                }
+            }
+            .sp_menu{
                 display: none;
-                height: 100%;
-                color: $highlight;
-                background-color: rgba(0, 0, 0, .7);
-
-                @include tab{
-                  width: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background-color: rgba(0,0,0,0.3);
-                };
-
-                h3{
-                    font-size: 1.6rem;
-                    font-weight: bold;
-                    margin: 0 0 5px;
-                }
-                .button-browse{
-                    font-size: 1rem;
-                    font-weight: bold;
+                 @include pc{
                     display: block;
-                    width: 180px;
-                    padding: 5px 0;
-                    color: $highlight;
-                    background-color: $ink1;
+                    @include f(29);
+                    background-color: #fff;
+                    border-radius: 6px;
+                    line-height: 1;
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+                    cursor: pointer;
+                    margin-top: 10px;
                 }
-                .button-browse:hover{
-                    background-color: #611B82;
+
+                i{
+                    vertical-align: middle;
+                    &.fa-times{
+                        display: none;
+                    }
+                    &.fa-bars{
+                        display: inline-block;
+                    }
+                    display: inline-block;
+                }
+
+                &.opened{
+                    .fa-times{
+                        display: inline-block;
+                    }
+                    .fa-bars{
+                        display: none;
+                    }
                 }
             }
-            div{
-                padding:10px;
-                box-sizing: border-box;
+
+            ul{
+                @include pc{
+                    display: none;
+                    background: $key02;
+                }
             }
-            small{
-                font-size: 1rem;
-                display: block;
-            }
-        }
-        a:hover .works-box-inner
-        {
-            display: flex;
-            align-items:center;
-            justify-content:center;
-            width: 100%;
         }
     }
-    .other_samples{
-      display: none;
+    .contactsLst{
+        list-style-type: none;
+
+        li{
+            text-align: right;
+            @include f(40);
+            line-height: 1;
+            @include pc{
+                // display: none;
+                @include f(29);
+                background-color: #fff;
+                border-radius: 6px;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                cursor: pointer;
+                margin-top: 10px;
+                position: absolute;
+                visibility: hidden;
+                transition: bottom ease 500ms ,visibility ease 500ms;
+            }
+            a{
+                color: $key01;
+                text-decoration: none;
+
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
+            i{
+                @include pc{
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+
+            }
+
+            &.sp_contact{
+                display: none;
+                @include pc{
+                    position: relative;
+                    display: block;
+                    visibility: visible;
+                }
+
+            }
+        }
+        li:nth-child(1){
+            @include f(42);
+            @include mb(5)
+            @include pc{
+                @include f(35)
+                bottom: 0px;
+                // bottom:-150px;
+            }
+        }
+        li:nth-child(2){
+            @include f(45);
+            @include pc{
+                @include f(34)
+                // bottom:-100px;
+                bottom:0px;
+            }
+
+            .pc{
+                @include pc{
+                    display: none;
+                }
+            }
+            .sp{
+                display: none;
+                @include pc{
+                    display: inherit;
+                }
+            }
+        }
+        li:nth-child(3){
+            @include pc{
+                // bottom:-50px;
+                bottom:0px;
+            }
+        }
+
+        &.opened{
+            li{
+                @include pc{
+                    // display: block;
+                    visibility: visible;
+                    // bottom: 0px;
+                }
+            }
+            li:nth-child(1){
+                @include pc{
+                    bottom: 150px;
+                }
+            }
+            li:nth-child(2){
+                @include pc{
+                    bottom:100px;
+                }
+            }
+            li:nth-child(3){
+                @include pc{
+                    bottom:50px;
+                }
+            }
+        }
     }
 }
-
 /*
-連絡先--------------------*/
-#contact{
-    border: 2px solid $ink1;
-    margin-top: 20px;
-    margin-bottom: 20px;
+footer-------------------------*/
+footer{
+    position: fixed;
+    bottom: 115px;
+    left: calc(14% - 15px);
+    transform-origin: bottom left;
+    transform: rotate(-90deg);
+    @include eng01;
+    @include f(15);
+    @include pc{
+        position: static;
+        transform: rotate(0);
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    @include sp{
+        @include f(14);
+        padding-bottom: 80px;
+    }
+}
+/*
+共通パーツ-------------------------*/
+.sec_com{
+    min-height: 100vh;
+    @include mb(200);
+    opacity: 0;
 
-    ul{
-        margin-top: 60px;
+    @include sp{
+        @include mb(100);
+    }
+}
+.tit_com01{
+    @include eng02;
+    @include f(50);
+    font-weight: 100;
+    letter-spacing: -0.15rem;
+    text-align: center;
+    @include lh(50,94);
+    margin-bottom: 30px;
+    @include sp{
+        @include f(38);
+        margin-bottom: 15px;
+    }
+}
+.txt_com01{
+    @include f(23);
+    text-align: center;
+    @include lh(23,37);
+    margin-bottom: 40px;
+    @include sp{
+        @include f(18);
+        margin-bottom: 20px;
+    }
+}
+.txt_com02{
+    margin-bottom: 40px;
+    @include sp{
+        margin-bottom: 20px;
+    }
+
+    &.tc{
         text-align: center;
         @include sp{
-          margin-top: 50px;
-        };
-
-        li{
-            font-size: 3rem;
-            display: inline-block;
-            -webkit-box-sizing: border-box;
-               -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-            margin-right: 20px;
-            text-align: center;
-            vertical-align: top;
-        }
-        li:last-child{
-            margin-right: 0;
-        }
-        .github{
-            font-size: 3.2rem;
-
-            i{
-                margin-left: 2px;
-            }
-        }
-        .tumblr{
-          i{
-              display: inline-block;
-              margin-top: 11px;
-          }
-        }
-        a{
-            display: block;
-            width: 50px;
-            height: 50px;
-            color: $highlight;
-            background-color: $ink1;
-        }
-        a:hover{
-            background-color: #611B82;
+            text-align-last: left;
         }
     }
 }
-
-
+.box_com01{
+    box-sizing: border-box;
+    @include w;
+    border: solid 1px $key01;
+    background-color: #fff;
+    padding: 15px;
+    @include f(15);
+    @include lh(15,24);
+    @include sp{
+        padding: 10px;
+        @include f(14);
+    }
+}
 /*
-コピーライト--------------------*/
-footer
-{
-    padding: 10px 0;
-    text-align: center;
-    color: $highlight;
-    background-color: $ink1;
+個別-------------------------*/
+.openingArea{
+    scroll-snap-align: start;
+    .lightCord{
+        width: 4px;
+        height: 150vh;
+        background-color: $key02;
+        @include ma;
+        @include sp{
+            width: 2px;
+        }
+    }
+    .light{
+        @include ma;
+        @include wpm(1920,129)
+        @include pc{
+            @include wpm(1024,129)
+            
+        }
+        @include sp{
+            @include wpm(360,80)
+            
+        }
+        h1{
+            @include dn;
+        }
+
+        .on{
+            display: none;
+        }
+    }
+    .scrollBtn{
+        position: fixed;
+        top: -35px;
+        left: 50%;
+        @include eng01;
+        transform-origin: left bottom;
+        transform: rotate(90deg);
+        color:$key02;
+        text-decoration: none;
+        @include f(38);
+        @include sp{
+            @include f(24);
+        }
+
+        i{
+            @include f(29)
+            @include sp{
+                @include f(18);
+            }
+        }
+    }
+    .skipBtn{
+        position: fixed;
+        bottom: 0px;
+        left: calc(50% + 60px );
+        @include eng01;
+        color:$key02;
+        text-decoration: none;
+        @include f(31);
+        cursor: pointer;
+        @include sp{
+            @include f(24);
+        }
+    }
+}
+.sec02{
+    &__in{
+        .skill__{
+            &tit{
+                @include f(23);
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
+                @include sp{
+                    margin-bottom: 5px;
+                    @include f(16);
+                    text-align: center;
+                }
+
+                &::before,&::after{
+                    border-bottom: solid 1px $key01;
+                    content: "";
+                    @include db;
+                    flex-grow: 1;
+                }
+                &::after{
+                    margin-left: 5px;
+                }
+                &::before{
+                    margin-right: 5px;
+                }
+            }
+            &txt{
+                @include mb(40);
+                @include sp{
+                    margin-bottom: 20px;
+                }
+                .txt{
+                    margin-bottom: 10px;
+                    @include sp{
+                        margin-bottom: 5px;
+                    }
+                }
+                .note{
+                    @include f(13);
+                    @include lh(13,22);
+                    padding-top: 5px;
+                    @include sp{
+                        @include f(12);
+                    }
+
+                    h4{
+                        &::before{
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "Font Awesome 5 Free";
+                            font-weight: 900;
+                            content: "\f10d";
+                            @include f(22);
+                            margin-right: 5px;
+                            @include sp{
+                                @include f(16);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.sec03{
+    &_in{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @include w;
+        @include sp{
+            display: block;
+        }
+
+        .price__tit{
+            @include f(22);
+            font-weight: bold;
+            @include wp(535,353);
+            margin-bottom: 10px;
+            @include sp{
+                width: 100%;
+                @include f(15);
+                margin-bottom: 5px;
+            }
+        }
+        .price__yen{
+            @include f(22);
+            @include wp(535,160);
+            margin-bottom: 10px;
+            @include sp{
+                width: 100%;
+                text-align: right;
+                @include f(15);
+            }
+        }
+        .price__txt{
+            @include f(13);
+            @include lh(13,22);
+            padding-top: 5px;
+            margin-bottom: 40px;
+            @include sp{
+                @include f(12);
+                margin-bottom: 20px;
+            }
+
+            h4{
+
+                &::before{
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    content: "\f069";
+                    @include f(22);
+                    margin-right: 5px;
+                    @include sp{
+                        @include f(15)
+                    }
+                }
+            }
+        }
+    }
+}
+.sec04{
+    opacity: 0;
+    padding-bottom: 150px;
+    position: relative;
+    .caption{
+        display: block;
+        @include f(12);
+        @include sp{
+            @include f(11);
+        }
+    }
+    .txt02{
+        text-align: right;
+    }
+    .arrows{
+        position: absolute;
+        left: 100%;
+        bottom: 150px;
+        width: 20%;
+        @include mq(1145px){
+            display: none;
+        }
+    }
+    .sp_contact_link{
+        @include pc{
+            text-decoration: underline;
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+}
+//JS操作
+// .off{
+//     @include dn;
+// }
+// .off02{
+//     opacity: 0;
+// }
+// .on{
+//     display: inherit;
+//     opacity: 1;
+// }
+
+//スクロールバー非表示
+html::-webkit-scrollbar{
+ display:none;
+}
+html {
+ -ms-overflow-style:none;
 }
