@@ -5,7 +5,9 @@ $(function () {
   var current_posi = "top";
   var position = $(window).height() / 3 * 2; // 発火させたい位置
 
-  var top = $('.light').offset().top - position;
+  var ani_position = $(window).height() / 2; // 発火させたい位置
+
+  var top = $('.light').offset().top - ani_position;
   var l_top;
   var l_skills;
   var l_price;
@@ -15,9 +17,9 @@ $(function () {
     var speed = 500;
     var href = $(this).attr("href");
     var target = $(href == "#" || href == "" ? 'html' : href);
-    var position = target.offset().top;
+    var s_position = target.offset().top;
     $("html, body").animate({
-      scrollTop: position
+      scrollTop: s_position
     }, speed, "swing");
     return false;
   }); //SPメニュー
