@@ -19,7 +19,7 @@ html
 }
 body{
     font-family: $font;
-    @include f(19);
+    // @include f(19);
     @include lh(19,31)
     letter-spacing: .1em;
     background-color: $key01;
@@ -353,7 +353,7 @@ footer{
 }
 .tit_com01{
     @include eng02;
-    @include f(50);
+    // @include f(50);
     font-weight: 100;
     letter-spacing: -0.15rem;
     text-align: center;
@@ -365,7 +365,7 @@ footer{
     }
 }
 .txt_com01{
-    @include f(23);
+    // @include f(23);
     text-align: center;
     @include lh(23,37);
     margin-bottom: 40px;
@@ -393,7 +393,7 @@ footer{
     border: solid 1px $key01;
     background-color: #fff;
     padding: 15px;
-    @include f(15);
+    // @include f(15);
     @include lh(15,24);
     @include sp{
         padding: 10px;
@@ -508,7 +508,7 @@ footer{
                     }
                 }
                 .note{
-                    @include f(13);
+                    // @include f(13);
                     @include lh(13,22);
                     padding-top: 5px;
                     @include sp{
@@ -569,7 +569,7 @@ footer{
             }
         }
         .price__txt{
-            @include f(13);
+            // @include f(13);
             @include lh(13,22);
             padding-top: 5px;
             margin-bottom: 40px;
@@ -593,6 +593,21 @@ footer{
                     margin-right: 5px;
                     @include sp{
                         @include f(15)
+                    }
+                }
+            }
+            ul{
+                padding: 0px;
+                margin: 0px;
+                list-style-type: none;
+
+                li{
+                    display: inline-block;
+
+                    &::before{
+                        display:inline-block;
+                        content: "・";
+                        padding-left: 10px;
                     }
                 }
             }

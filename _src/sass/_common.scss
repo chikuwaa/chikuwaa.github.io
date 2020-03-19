@@ -58,8 +58,9 @@ $sp: 480px;  // スマホ
 @mixin f($size,$base:16){
     font-size: ($size / ($base * 0.625)) + rem
 }
-@mixin lh($tsize,$lsize){
+@mixin lh($tsize,$lsize,$base:16){
     line-height: round(($lsize / $tsize) * 100) / 100 ;
+    font-size: ($tsize / ($base * 0.625)) + rem;
 }
 @mixin wp($full,$width){
     width: percentage($width / $full);
