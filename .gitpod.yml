@@ -3,7 +3,9 @@ image:
 
 # 起動時に実行するコマンド
 tasks:
-  - init: npm install
+  - init: npm install -g npm
+  - init: npm install --no-optional
+  - init: npm install -g npm-check-updates
 
 # 起動時に開くポート
 ports:

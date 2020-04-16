@@ -52,6 +52,7 @@
     "postcss-cli": "^7.1.0"
   },
   "dependencies": {
+    "optimist": "^0.6.1",
     "smoothscroll-polyfill": "^0.4.4"
   }
 }
