@@ -1,0 +1,14 @@
+<% 
+    var root = './';
+    var thisPage = 'tumblr';
+    var thisName = '';
+    var title = '';
+%>
+<%- include(root + '../_inc/_head',{root,thisPage,title}) %>
+<main class="">
+<h2>Tumblr Posts</h2>
+
+<button onclick="fetchPosts('isobeagedesu.tumblr.com');">Get Posts</button>
+<div id="result"></div>
+</main>
+<%- include(root + '../_inc/_footer',{root,thisPage}) %>

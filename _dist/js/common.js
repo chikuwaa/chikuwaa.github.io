@@ -58,8 +58,8 @@ $(function () {
           $(window).scrollTop(0);
         }, 2000);
       }
-    } else {} // console.log("b");
-    //current移動
+    } else {// console.log("b");
+    } //current移動
 
 
     if (matchMedia('(max-width: 768px)').matches) {// ウィンドウサイズが768px以下のとき

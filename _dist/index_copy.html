@@ -1,8 +1,5 @@
-<% 
-    var root;
-    var thisPage;
-    var title;
-%>
+
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -23,11 +20,27 @@
         <meta name="keywords" content="Web, ポートフォリオ, Web制作 ,同人サイト制作 ,イラスト制作">
         <meta http-equiv="Content-Script-Type" content="text/javascript">
         <meta http-equiv="Content-Style-Type" content="text/css">
-        <link rel="stylesheet" href="<%= root %>css/reset.css">
+        <link rel="stylesheet" href="./css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Bellefair|Cedarville+Cursive&display=swap" rel="stylesheet">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
-        <% if(thisPage == "index"){ %><link rel="stylesheet" href="<%= root %>css/style.css"><% } %>
+        
     </head>
     <body class="">
     <div class="wrap">
+<main class="">
+<h2>Tumblr Posts</h2>
+
+<button onclick="fetchPosts('isobeagedesu.tumblr.com');">Get Posts</button>
+<div id="result"></div>
+</main>
+
+        <footer>
+            <small class="">&copy 2017-2020 geso, All Rights Reserved.</small>
+        </footer>
+        </div>
+        
+        <script src="./js/newPosts.js"></script>
+    </body>
+</html>
+
