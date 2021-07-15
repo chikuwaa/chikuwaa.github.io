@@ -56,16 +56,16 @@ $sp: 480px;  // スマホ
     margin-bottom: $marginb + px;
 }
 @mixin f($size,$base:16){
-    font-size: ($size / ($base * 0.625)) + rem
+    font-size: math.div($size , ($base * 0.625)) + rem
 }
 @mixin lh($tsize,$lsize,$base:16){
-    line-height: round(($lsize / $tsize) * 100) / 100 ;
-    font-size: ($tsize / ($base * 0.625)) + rem;
+    line-height: math.div( round( math.div($lsize, $tsize) * 100) , 100 );
+    font-size: math.div( $tsize, $base * 0.625) + rem;
 }
 @mixin wp($full,$width){
-    width: percentage($width / $full);
+    width: percentage(math.div($width, $full));
 }
 @mixin wpm($full,$width){
-    width: percentage($width / $full);
+    width: percentage(math.div($width, $full));
     max-width: $width + px;
 }
