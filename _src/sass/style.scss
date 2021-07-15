@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @use "sass:math";
-@import "_common";
+@import "_var";
 .pc{
     @include pc{
         display: none;

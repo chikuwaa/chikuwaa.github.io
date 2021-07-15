@@ -12,6 +12,13 @@ const sass = require('gulp-sass')(require('sass'));
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const postcssGapProperties = require("postcss-gap-properties");
+//JS(ES2015(ES6)=>ES5)
+const babel = require('gulp-babel');
+//画像圧縮
+const imagemin = require('gulp-imagemin');
+const mozjpeg = require('imagemin-mozjpeg');
+const pngquant = require('imagemin-pngquant');
+const changed = require('gulp-changed');
 //ディレクトリ設定
 const srcDir ="_src/"
 const distDir ="_dist/"
@@ -63,16 +70,49 @@ gulp.task("sass", function (done) {
       .pipe(bs.stream());
       done();
 });
+gulp.task("js", function () {
+	return gulp
+        .src([srcDir+"js/**/*.js", "!" + srcDir+"js/**/*.min.js"])
+        .pipe(plumber())
+        .pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(gulp.dest(distDir+"js"))
+        .pipe(bs.stream());
+    done();
+});
+gulp.task("img", function () {
+    return gulp
+        .src(srcDir+'images/**/*')
+        .pipe(plumber())
+        .pipe(changed(distDir+'images'))
+        .pipe(
+            imagemin([
+            pngquant({
+                quality: [.60, .70], // 画質
+                speed: 1 // スピード
+            }),
+            mozjpeg({ quality: 65 }), // 画質
+            imagemin.svgo(),
+            imagemin.optipng(),
+            imagemin.gifsicle({ optimizationLevel: 3 }) // 圧縮率
+            ])
+        )
+        .pipe(gulp.dest(distDir+"images"));
+    done();
+});
 
 // ファイルの監視
 gulp.task("watch", function () {
     gulp.watch([srcDir+"ejs/**/*.ejs"], gulp.task("ejs"));
     gulp.watch([srcDir+"sass/**/*.scss"], gulp.task("sass"));
+    gulp.watch([srcDir+"js/**/*.js"], gulp.task("js"));
+    gulp.watch([srcDir+"images/**/*"], gulp.task('img'));
 });
 gulp.task(
     "default",
     gulp.series( //順番に実行
-        gulp.parallel("ejs","sass"), 
+        gulp.parallel("ejs","sass","js"), 
         gulp.parallel("watch", "bs-init") //並列に実行
     )
 );
