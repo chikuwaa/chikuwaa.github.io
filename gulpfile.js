@@ -1,24 +1,30 @@
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");//エラーでビルドを中止させない
+import gulp from "gulp";
 //ローカルサーバ
-const bs = require("browser-sync").create();
+import bs_imp from "browser-sync";
+const bs = bs_imp.create();
 //EJS
-const ejs = require("gulp-ejs");
-const rename = require("gulp-rename");
-const fs = require("fs");
-const htmlbeautify = require("gulp-html-beautify"); //htmlを整形する
+import ejs from "gulp-ejs";
+import rename from "gulp-rename";
+import fs from "fs";
+import htmlbeautify from "gulp-html-beautify"; //htmlを整形する
 //SASS+Autoprefixer
-const sass = require('gulp-sass')(require('sass'));
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const postcssGapProperties = require("postcss-gap-properties");
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass( dartSass );
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
+import postcssGapProperties from 'postcss-gap-properties';
 //JS(ES2015(ES6)=>ES5)
-const babel = require('gulp-babel');
+import babel from "gulp-babel";
 //画像圧縮
-const imagemin = require('gulp-imagemin');
-const mozjpeg = require('imagemin-mozjpeg');
-const pngquant = require('imagemin-pngquant');
-const changed = require('gulp-changed');
+import imagemin from "gulp-imagemin";
+// const imagemin = require('gulp-imagemin');
+import mozjpeg from "imagemin-mozjpeg";
+import pngquant from "imagemin-pngquant";
+import changed from "gulp-changed";
+import imageminSvgo from 'imagemin-svgo';
+import imageminOptipng from 'imagemin-optipng';
+import imageminGifsicle from 'imagemin-gifsicle';
 //ディレクトリ設定
 const srcDir ="_src/"
 const distDir ="_dist/"
@@ -36,7 +42,7 @@ gulp.task("ejs", function (done) {
     const data = JSON.parse(fs.readFileSync(srcDir+'ejs/options.json'));
     return gulp
       .src([srcDir+"ejs/**/*.ejs", "!" + srcDir+"ejs/**/_*.ejs"])
-      .pipe(plumber())
+      // .pipe(plumber())
       .pipe(ejs(data))
       .pipe(
           htmlbeautify({
@@ -56,7 +62,7 @@ gulp.task("ejs", function (done) {
 gulp.task("sass", function (done) {
     return gulp
       .src([srcDir+"sass/**/*.scss", "!" + srcDir+"sass/**/_*.scss"])
-      .pipe(plumber())
+      // .pipe(plumber())
       .pipe(sass({
         outputStyle: 'compressed'// そのままはexpanded Minifyするなら'compressed'
       }))
@@ -73,7 +79,7 @@ gulp.task("sass", function (done) {
 gulp.task("js", function () {
 	return gulp
         .src([srcDir+"js/**/*.js", "!" + srcDir+"js/**/*.min.js"])
-        .pipe(plumber())
+        // .pipe(plumber())
         .pipe(babel({
 			presets: ['@babel/preset-env']
 		}))
@@ -84,7 +90,7 @@ gulp.task("js", function () {
 gulp.task("img", function () {
     return gulp
         .src(srcDir+'images/**/*')
-        .pipe(plumber())
+        // .pipe(plumber())
         .pipe(changed(distDir+'images'))
         .pipe(
             imagemin([
@@ -93,9 +99,14 @@ gulp.task("img", function () {
                 speed: 1 // スピード
             }),
             mozjpeg({ quality: 65 }), // 画質
-            imagemin.svgo(),
-            imagemin.optipng(),
-            imagemin.gifsicle({ optimizationLevel: 3 }) // 圧縮率
+            imageminSvgo({
+              plugins: [{
+                name: 'removeViewBox',
+                active: false
+              }]
+            }),
+            imageminOptipng(),
+            imageminGifsicle()
             ])
         )
         .pipe(gulp.dest(distDir+"images"));
