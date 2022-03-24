@@ -26,8 +26,9 @@ import imageminSvgo from 'imagemin-svgo';
 import imageminOptipng from 'imagemin-optipng';
 import imageminGifsicle from 'imagemin-gifsicle';
 //ディレクトリ設定
-const srcDir ="_src/"
-const distDir ="_dist/"
+const srcDir ="_src/";
+const distDir ="_dist/";
+const publicDir ="./";
 
 gulp.task("bs-init", function () {
     bs.init({
@@ -119,6 +120,14 @@ gulp.task("watch", function () {
     gulp.watch([srcDir+"sass/**/*.scss"], gulp.task("sass"));
     gulp.watch([srcDir+"js/**/*.js"], gulp.task("js"));
     gulp.watch([srcDir+"images/**/*"], gulp.task('img'));
+});
+// 公開処理
+gulp.task("copy", function () {
+  return gulp.src( 
+    [ distDir+'*.html' , distDir+'**/*.css', distDir+'images/*', distDir+'js/*' ],
+    { base: distDir }
+  )
+  .pipe( gulp.dest( publicDir ) );
 });
 gulp.task(
     "default",
