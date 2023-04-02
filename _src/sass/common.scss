@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@use "sass:math";
+@import "_var";
+.pc{
+    @include pc{
+        display: none;
+    }
+}
+.sp{
+  display: none;
+  @include sp{
+    display: inherit;
+  }
+}
+
+/*
+ページ全体--------------------*/
+html
+{
+    font-size: 62.5%;
+}
+body{
+  @include fg;
+    // @include f(19);
+    @include lh(19,31);
+    letter-spacing: .1em;
+    // background-color: $key01;
+    // color: $key02;
+
+    @include sp{
+        @include f(14);
+    }
+
+}
+img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
