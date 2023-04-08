@@ -1,39 +1,177 @@
 @charset "UTF-8";
 @use "sass:math";
 @import "_var";
-.pc{
-    @include pc{
-        display: none;
-    }
-}
-.sp{
-  display: none;
-  @include sp{
-    display: inherit;
-  }
-}
-
 /*
 ページ全体--------------------*/
 html
 {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 body{
   @include fg;
-    // @include f(19);
-    @include lh(19,31);
-    letter-spacing: .1em;
-    // background-color: $key01;
-    // color: $key02;
+  font-weight: 400;
+  @include lh(16,26);
+  letter-spacing: .1em;
+  background-color: $base;
+  color: $main;
+  position: relative;
+  @include sp{
+    @include f(14);
+  }
 
-    @include sp{
-        @include f(14);
-    }
+  &::before{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    @include w;
+    height: 50px;
+    z-index: 10;
+    background-color: $base;
+    content: "";
+  }
 
 }
 img{
     max-width: 100%;
     width: 100%;
     height: auto;
+}
+/*
+共通レイアウト--------------------*/
+.contents_wrap{
+  @include flex;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+
+  header{
+    width: calcPer(1400,500);
+    position: sticky;
+    top: 0px;
+    right: 0px;
+    z-index: 11;
+
+  }
+  .contents{
+    @include wpm(1400,800);
+    margin-right: calcPer(1400,100);
+    @include bs;
+    padding-top: 50px;
+  }
+}
+/*
+header--------------------*/
+header{
+
+  .logo_wrap{
+    display: grid;
+    position: relative;
+    grid-template-columns:1fr;
+    grid-template-rows: auto auto;
+  }
+  .logo_bg{
+    overflow: hidden;
+    margin-left: -20px;
+
+    svg{
+      transform-origin: 12% 90%;
+      transform: scale(1.5);
+    }
+  }
+  .logo_bg,.logo_content{
+    grid-area: 1/2;
+  }
+  .logo_content{
+    @include flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+
+    .logo{
+      padding: 1em;
+      @include tc;
+      @include eng01;
+      @include f(60);
+      color: #fff;
+      line-height: 1;
+      box-sizing: border-box;
+
+      span{
+        font-family: 'Yomogi', cursive;
+        display: block;
+        font-size: calcEm(60,20);
+        @include tr;
+        transform: translateY(-0.8em);
+        color: rgba(#fff,0.8);
+        position: relative;
+        z-index: 2;
+        @include ls(150);
+
+      }
+    }
+    .header_txt{
+      box-sizing: border-box;
+      padding: 0px calcEm(16,70);
+      @include ls(0);
+      color: #fff;
+      font-weight: 300;
+    }
+  }
+  nav{
+    @include tc;
+
+    .header_nav{
+      @include dib;
+      @include tl;
+
+      li{
+
+        &::before{
+          @include dib;
+          border: solid 0.5em transparent;
+          border-left-color: $main;
+          content: "";
+          transition: all 500ms;
+
+        }
+
+        &:hover{
+          &::before{
+            transform: translateX(0.5em);
+
+          }
+        }
+        a{
+          color: $main;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+/*
+共通パーツ--------------------*/
+.tit_com01{
+  font-size: calc(1em * 1.2 * 1.2);
+  font-weight: 400;
+  margin-bottom: 1em;
+  color: $accent;
+
+  span{
+    background: linear-gradient(to bottom , transparent 0% ,  transparent 60% ,#fff 60% , #fff 100%);
+    padding-bottom: 0.1em;
+  }
+}
+/*
+デバイス対応--------------------*/
+.pc{
+  @include pc{
+      display: none;
+  }
+}
+.sp{
+display: none;
+@include sp{
+  display: inherit;
+}
 }

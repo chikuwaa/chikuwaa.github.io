@@ -56,7 +56,7 @@ createApp({
     const allPosts = await Promise.all(this.tumblrBlogNames.map(this.getPosts));
     this.posts = allPosts.flat();
     this.sortedPosts = this.posts.sort((a, b) => b.date - a.date);
-    this.viewPosts = this.sortedPosts.slice(0,7);
+    this.viewPosts = this.sortedPosts.slice(0,8);
 
   },
 }).mount('#app');

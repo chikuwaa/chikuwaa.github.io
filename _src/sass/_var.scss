@@ -2,9 +2,10 @@
 $f-go : YakuHanJP_Noto ,'Noto Sans JP', sans-serif;
 $f-min : 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E, serif;
 $f-eng : 'Bungee Hairline', cursive , sans-serif;
-$key01 : #3B3353;
-$key02 : #F0F3C4;
-$pc: 1024px; // PC
+$base : rgb(194, 194, 194);// グラデーションの薄い方
+$main : #333;
+$accent : rgb(79, 79, 79); // グラデーションの濃い方
+$pc: 1000px; // PC
 $tab: 768px; // タブレット
 $sp: 480px;  // スマホ
 @mixin pc {
@@ -80,6 +81,19 @@ $sp: 480px;  // スマホ
 }
 @mixin ls($tracking){
   letter-spacing: math.div( $tracking , 1000 ) + em;
+}
+@mixin flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+@mixin dib{
+  display: inline-block;
+}
+@mixin bs{
+  box-sizing: border-box;
+}
+@mixin sb{
+  justify-content: space-between;
 }
 @function calcEm($fontPxSize,$pxWidth){
   // px => em
