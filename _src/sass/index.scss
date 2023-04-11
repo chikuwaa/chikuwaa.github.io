@@ -23,12 +23,15 @@
     color: #fff;
     @include mb(20);
     overflow: hidden;
-    aspect-ratio: 1;
-    // grid-template-columns:1fr;
+    aspect-ratio: 1.7;
+    border: solid 4px $accent;
 
     .post_tit{
       grid-area: 1/-1;
-
+      padding: 1em 0.5em 2em;
+      @include bs;
+      font-size: calc(1em * 1.2);
+      background: linear-gradient(to bottom, rgba(#000,0.7),rgba(#000,0));
       position: relative;
       z-index: 2;
     }
@@ -46,7 +49,10 @@
     }
     .post_txt{
       grid-area: 1/-1;
-
+      padding: 1em 0.5em;
+      @include bs;
+      background: linear-gradient(to top, rgba(#fff,0.7),rgba(#fff,0));
+      font-weight: 300;
       position: relative;
       z-index: 2;
     }
@@ -100,4 +106,11 @@
       }
     }
   }
+}
+.sec02{
+  border-radius: 10px;
+  @include bs;
+  padding: 50px;
+  background-color: rgba(#fff,0.5);
+  border: solid 4px $accent;
 }

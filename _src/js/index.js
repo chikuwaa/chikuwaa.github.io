@@ -14,12 +14,13 @@ createApp({
     async getPosts(blogName) {
       const response = await fetch(`https://api.tumblr.com/v2/blog/${blogName}/posts?api_key=${this.tumblrApiKey}&limit=5`);
       const data = await response.json();
-      console.log(data);
+      const backgroundColor = data.response.blog.theme.background_color;
 
       return data.response.posts.map((post) => {
         this.setDoc(post.body);
-        return this.getReturnContent(post.id, post.date,blogName,post.post_url);
+        return this.getReturnContent(post.id, post.date,blogName,post.post_url, backgroundColor);
       });
+
     },
     setDoc(htmlData) {
       this.doc = new DOMParser().parseFromString(htmlData, 'text/html');
@@ -33,18 +34,30 @@ createApp({
     getFirstContent(items){
       return items.length > 0 ? items[0] : '';
     },
-    getReturnContent(i, date ,n ,u){
+    getReturnContent(i, date ,n ,u ,bcolor){
       const firstH1Content = this.getFirstContent(this.searchTagContent('h1'));
       const firstImage = this.getFirstContent(this.searchImg());
-      const first50Chars = this.searchTagContent('p').join('').slice(0, 50);
+      let allChars = this.searchTagContent('p').join('');
+      // console.log(allChars.length);
+      let viewChars;
+      if(allChars.length > 101){
+        viewChars = this.searchTagContent('p').join('').slice(0, 100);
+      }else{
+        viewChars = allChars;
+
+      }
       const returnItem = {
         id: i,
         title: firstH1Content ? firstH1Content : "",
         date: new Date(date),
         firstImage: firstImage || '',
-        first50Chars: firstImage ? '' : first50Chars,
+        first100Chars: firstImage ? '' : viewChars,
         srcBlogName: n,
         srcUrl: u,
+        styleObject: {
+          "border-color": bcolor,
+        }
+
       };
       return returnItem;
     },
