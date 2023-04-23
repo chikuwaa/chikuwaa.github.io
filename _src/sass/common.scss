@@ -12,26 +12,19 @@ body{
   font-weight: 400;
   @include lh(16,26);
   letter-spacing: .1em;
-  background-color: $base;
   color: $main;
   position: relative;
+  background: url(../images/bg01.jpg) center center/cover no-repeat;
+  background-attachment: fixed;
+  backdrop-filter: brightness(2);
+
   @include sp{
     @include f(14);
   }
 
-  &::before{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    @include w;
-    height: 50px;
-    z-index: 10;
-    background-color: $base;
-    content: "";
-  }
 
 }
-img{
+img,svg{
     max-width: 100%;
     width: 100%;
     height: auto;
@@ -42,20 +35,21 @@ img{
   @include flex;
   align-items: flex-start;
   flex-direction: row-reverse;
+  @include mb(200);
 
   header{
-    width: calcPer(1400,500);
+    width: calcPer(1400,400);
     position: sticky;
     top: 0px;
     right: 0px;
     z-index: 11;
-
+    margin-right: calcPer(1400,20);
   }
   .contents{
     @include wpm(1400,800);
     margin-right: calcPer(1400,100);
     @include bs;
-    padding-top: 50px;
+    padding-top: 100px;
   }
 }
 /*
@@ -67,18 +61,17 @@ header{
     position: relative;
     grid-template-columns:1fr;
     grid-template-rows: auto auto;
+    @include mb(50);
+    border-radius: 0px 0px 50px 50px;
+    overflow: hidden;
   }
   .logo_bg{
-    overflow: hidden;
-    margin-left: -20px;
-
-    svg{
-      transform-origin: 12% 90%;
-      transform: scale(1.5);
-    }
+    grid-area: 1/2;
+    background-color: $accent;
   }
   .logo_bg,.logo_content{
     grid-area: 1/2;
+    padding-bottom: 100px;
   }
   .logo_content{
     @include flex;
@@ -88,7 +81,7 @@ header{
     z-index: 2;
 
     .logo{
-      padding: 1em;
+      padding: 1.5em 1em;
       @include tc;
       @include eng01;
       @include f(60);
@@ -150,16 +143,46 @@ header{
   }
 }
 /*
+footer--------------------*/
+footer{
+  margin-left: auto;
+  margin-right: 0px;
+  background-color: $accent;
+  border-radius: 50px 0px 0px 0px;
+  width: 95%;
+  @include bs;
+  padding: 50px 0px 50px 50px;
+}
+/*
 共通パーツ--------------------*/
 .tit_com01{
   font-size: calc(1em * 1.2 * 1.2);
   font-weight: 400;
-  margin-bottom: 1em;
-  color: $accent;
+  margin-bottom: 1.2em;
+  color: #fff;
 
   span{
-    background: linear-gradient(to bottom , transparent 0% ,  transparent 60% ,#fff 60% , #fff 100%);
-    padding-bottom: 0.1em;
+    @include db;
+    position: relative;
+
+    &::before{
+      @include db;
+      content: "";
+      position: absolute;
+      background-color: $accent;
+      @include w;
+      left: calc(50% - 36vw);
+      top: 0px;
+      bottom: 0px;
+      z-index: -1;
+      border-radius: 0px 30px 30px 0px;
+    }
+  }
+
+}
+.txt_com01{
+  & + .txt_com01{
+    margin-top: 1em;
   }
 }
 /*

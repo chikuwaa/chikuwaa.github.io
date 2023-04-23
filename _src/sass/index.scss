@@ -1,13 +1,78 @@
 @charset "UTF-8";
 @use "sass:math";
 @import "_var";
-.sec_com{
-  // background-color: #fff;
-  // padding: 50px;
-  // @include bs;
-  // border-radius: 20px;
+/*========= ▼LoadingのためのCSS ===============*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.progress {
+  background: url(../images/bg01.jpg) center center/cover no-repeat;
+  color: #fff;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
 
-  @include mb(50);
+  &::before{
+    @include db;
+    content: "";
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    @include w;
+    height: 100%;
+  }
+
+  .line01,.line02{
+    @include db;
+    position: absolute;
+    width: 30%;
+  }
+  .line01{
+    top: 0px;
+    left: 0px;
+  }
+  .line02{
+    bottom: 0px;
+    right: 0px;
+  }
+  #line01 ,#line02{
+    stroke-dasharray:1600px;
+    stroke-dashoffset:1600px;
+
+    &.on{
+      animation:just 2s forwards;
+    }
+  }
+}
+@keyframes just {
+  0% {
+    stroke-dashoffset:1600px;
+  }
+  100% {
+    stroke-dashoffset:0px;
+  }
+
+}
+.progress_text {
+  @include eng01;
+  @include f(24);
+  position: absolute;
+  text-align: center;
+  top: calc(50% - 14px);
+  width: 100%;
+}
+/*========= ▲LoadingのためのCSS ===============*/
+.sec_com{
+  @include mb(100);
 }
 .post_list{
   @include flex;
@@ -19,21 +84,25 @@
     @include bs;
     display: grid;
     border-radius: 10px;
-    background-color: $accent;
     color: #fff;
     @include mb(20);
     overflow: hidden;
-    aspect-ratio: 1.7;
-    border: solid 4px $accent;
+    aspect-ratio: 1.5;
+
+    .bg{
+      background: rgba(0,0,0,0.5);
+      grid-area: 1/-1;
+    }
 
     .post_tit{
       grid-area: 1/-1;
       padding: 1em 0.5em 2em;
       @include bs;
       font-size: calc(1em * 1.2);
-      background: linear-gradient(to bottom, rgba(#000,0.7),rgba(#000,0));
       position: relative;
       z-index: 2;
+      align-self: center;
+      justify-self: start;
     }
     figure{
       grid-area: 1/-1;
@@ -49,25 +118,35 @@
     }
     .post_txt{
       grid-area: 1/-1;
-      padding: 1em 0.5em;
+      padding: 1em;
       @include bs;
-      background: linear-gradient(to top, rgba(#fff,0.7),rgba(#fff,0));
       font-weight: 300;
       position: relative;
       z-index: 2;
+      align-self: center;
+      justify-self: start;
     }
     .post_date{
       grid-area: 1/-1;
-
       position: relative;
       z-index: 2;
-      // @include eng01;
       align-self: end;
       justify-self: start;
       @include bs;
       padding: 0.2em 0.5em;
-      // color: $base;
       font-weight: 300;
+    }
+    .tag{
+      grid-area: 1/-1;
+      align-self: start;
+      justify-self: start;
+      padding: 0.5em 1em;
+      position: relative;
+      z-index: 3;
+      border-radius: 0px 10px 10px 0px;
+      margin-top: 5px;
+      font-size: calc(1em / 1.5);
+      color: rgba(#000,0.7);
     }
     a{
       grid-area: 1/-1;
@@ -108,9 +187,34 @@
   }
 }
 .sec02{
-  border-radius: 10px;
-  @include bs;
-  padding: 50px;
-  background-color: rgba(#fff,0.5);
-  border: solid 4px $accent;
+  padding: 50px 0px;
+  color: #fff;
+  position: relative;
+
+  .tit_com01{
+    &::before{
+      @include dn;
+    }
+  }
+
+  &::before{
+    @include db;
+    content: "";
+    position: absolute;
+    background-color: $accent;
+    left: calc(50% - 36vw);
+    top: 0px;
+    bottom: 0px;
+    z-index: -1;
+    right: 0px;
+    border-radius: 0px 50px 50px 0px;
+  }
+
+  .cap{
+    font-size: calc(1em / 1.2);
+    @include bs;
+    padding: 0.5em ;
+    border: solid 1px #fff;
+    @include dib;
+  }
 }

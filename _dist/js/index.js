@@ -1,5 +1,62 @@
 const { createApp } = Vue;
-createApp({
+
+const Loading = createApp({
+  data() {
+    return {
+      // visible: true,
+      visible: false,
+      current: 0,
+      progressText: 0,
+      imgLoaded: 0,
+      imgTotal: 0,
+      progressTimer: 0,
+      start: "off",
+    };
+  },
+  methods:{
+    imagesProgress(){
+      // ローディング
+      const imgLoad = imagesLoaded(document.getElementsByTagName('body'));
+      this.progressTimer = setInterval(this.updateProgress, 1000 / 60);
+      this.imgTotal = imgLoad.images.length;
+      const self = this;
+
+      imgLoad.on('progress', function () {
+        self.imgLoaded++;
+      });
+
+    },
+    updateProgress () {
+      const target = (this.imgLoaded / this.imgTotal) * 100;
+
+      this.current += (target - this.current) * 0.1;
+      this.progressText =  parseInt(this.current);
+
+      const self = this;
+      if(this.current > 50){
+        this.start = "on";
+      }
+      if(this.current >= 100){
+        clearInterval(this.progressTimer);
+        setTimeout(function(){
+          self.visible = false;
+        },500)
+      }
+      if (this.current > 99.9) {
+        this.current = 100;
+      }
+
+    },
+  },
+  created(){
+    // this.imagesProgress();
+
+  }
+});
+Loading.mount('#progress');
+
+
+const tumblrGetPost = createApp({
    data() {
     return {
       posts: [],
@@ -55,7 +112,7 @@ createApp({
         srcBlogName: n,
         srcUrl: u,
         styleObject: {
-          "border-color": bcolor,
+          "background-color": bcolor,
         }
 
       };
@@ -70,6 +127,6 @@ createApp({
     this.posts = allPosts.flat();
     this.sortedPosts = this.posts.sort((a, b) => b.date - a.date);
     this.viewPosts = this.sortedPosts.slice(0,8);
-
   },
-}).mount('#app');
+});
+tumblrGetPost.mount('#app');
