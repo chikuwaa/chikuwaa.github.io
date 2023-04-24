@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>げそ</title>
-  <meta name="description" content="げそのポートフォリオサイト。WEBコーダーをしながら絵を描いて過ごしています。オリジナルイラスト・漫画などの新着投稿をご確認いただけます。">
+  <meta name="description" content="げそのポートフォリオサイト。WEBコーダーをしながら絵を描いています。オリジナルイラスト・漫画などの新着投稿をご確認いただけます。">
   <meta name="keywords" content="ポートフォリオサイト,イラスト制作, Web制作 ,同人サイト制作">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
@@ -36,7 +36,7 @@
         <div class="logo_content">
           <h1 class="logo"> Geso<span>げそ</span>
           </h1>
-          <p class="header_txt"> げそのポートフォリオサイト。WEBコーダーをしながら絵を描いて過ごしています。オリジナルイラスト・漫画などの新着投稿をご確認いただけます。 </p>
+          <p class="header_txt"> げそのポートフォリオサイト。WEBコーダーをしながら絵を描いています。オリジナルイラスト・漫画などの新着投稿をご確認いただけます。 </p>
         </div>
       </div>
       <nav>
@@ -77,7 +77,7 @@
     <main class="contents">
       <section class="sec_com" id="news">
         <div id="app">
-          <h2 class="tit_com01"><span>新着記事一覧</span></h2>
+          <h2 class="tit_com01"><span><b class="eng">New</b>新着記事一覧</span></h2>
           <ul class="post_list">
             <li v-for="post in viewPosts" :key="post.id" :style="post.styleObject">
               <div class="bg"></div>
@@ -96,7 +96,7 @@
         </div>
       </section>
       <section class="sec_com sec02" id="about">
-        <h2 class="tit_com01">お仕事のご依頼について</h2>
+        <h2 class="tit_com01"><b class="eng">About</b>お仕事のご依頼について</h2>
         <p class="txt_com01"> LPコーディングやHP修正作業など、請け負っております。<br>
           <span class="cap">LPコーディング:11,000円～/HP修正:見積り対応</span>
         </p>
@@ -106,15 +106,20 @@
   </div>
   <!-- ▲contents_wrap -->
   <footer id="contact">
+    <h2 class="tit_com01"><b class="eng">Contact</b>連絡先</h2>
     <div class="footer_in">
+      <div class="logoBox">
+        <p class="logo"> Geso<span>げそ</span>
+        </p>
+      </div>
       <div class="txtBox">
-        <h2 class="tit_com01">連絡先</h2>
+        <p class="txt_com01"> お問い合わせ、メッセージはこちらから </p>
         <ul class="contact_list">
           <li><a href="https://chikuwaaaa.tumblr.com/ask" target="_blank">Tumblr Ask</a></li>
           <li><a href="https://forms.gle/j6wwCS3sb8pnAbSx9" target="_blank">google Form</a></li>
           <li><a href="m&#97;i&#108;t&#111;:&#107;&#46;a&#110;&#100;&#97;&#114;&#46;m.&#112;&#64;&#103;&#109;&#97;&#105;&#108;.&#99;o&#109;">mail</a></li>
         </ul>
-        <p class="txt_com01"> 返信先をご記入いただいた場合、5日以内にお返事させていただきます。<br> 6日以上待っても連絡がなければ、お手数をおかけしますが別の方法から再度お問い合わせいただけますと幸いです。 </p>
+        <p class="caption"> 返信先をご記入いただいた場合、5日以内にお返事させていただきます。<br> 6日以上待っても連絡がなければ、お手数をおかけしますが別の方法から再度お問い合わせいただけますと幸いです。 </p>
         <ul class="icon_list">
           <li><a href="https://isobeagedesu.tumblr.com/" target="_blank"><i class="fa-brands fa-tumblr"></i></a></li>
           <li><a href="https://chikuwaaaa.tumblr.com/" target="_blank"><i class="fab fa-tumblr-square"></i></a></li>

@@ -9,25 +9,36 @@ html
 }
 body{
   @include fg;
-  font-weight: 400;
+  font-weight: 300;
   @include lh(16,26);
   letter-spacing: .1em;
   color: $main;
   position: relative;
-  background: url(../images/bg01.jpg) center center/cover no-repeat;
-  background-attachment: fixed;
-  backdrop-filter: brightness(2);
-
   @include sp{
     @include f(14);
   }
 
-
+  &::before{
+    @include db;
+    content: "";
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    @include w;
+    height: 100vh;
+    background: url(../images/bg01.jpg) center center/cover no-repeat;
+    z-index: -1;
+    opacity: 0.4;
+  }
 }
 img,svg{
     max-width: 100%;
     width: 100%;
     height: auto;
+}
+ol,li{
+  list-style: none;
+
 }
 /*
 共通レイアウト--------------------*/
@@ -50,6 +61,28 @@ img,svg{
     margin-right: calcPer(1400,100);
     @include bs;
     padding-top: 100px;
+  }
+}
+.logo{
+  padding: 1.5em 1em;
+  @include tc;
+  @include eng01;
+  @include f(60);
+  color: #fff;
+  line-height: 1;
+  box-sizing: border-box;
+
+  span{
+    font-family: 'Yomogi', cursive;
+    display: block;
+    font-size: calcEm(60,20);
+    @include tr;
+    transform: translateY(-0.8em);
+    color: rgba(#fff,0.8);
+    position: relative;
+    z-index: 2;
+    @include ls(150);
+
   }
 }
 /*
@@ -80,28 +113,7 @@ header{
     position: relative;
     z-index: 2;
 
-    .logo{
-      padding: 1.5em 1em;
-      @include tc;
-      @include eng01;
-      @include f(60);
-      color: #fff;
-      line-height: 1;
-      box-sizing: border-box;
 
-      span{
-        font-family: 'Yomogi', cursive;
-        display: block;
-        font-size: calcEm(60,20);
-        @include tr;
-        transform: translateY(-0.8em);
-        color: rgba(#fff,0.8);
-        position: relative;
-        z-index: 2;
-        @include ls(150);
-
-      }
-    }
     .header_txt{
       box-sizing: border-box;
       padding: 0px calcEm(16,70);
@@ -151,19 +163,90 @@ footer{
   border-radius: 50px 0px 0px 0px;
   width: 95%;
   @include bs;
-  padding: 50px 0px 50px 50px;
+  padding: 4em 50px 1em 50px;
+
+  .footer_in{
+    @include flex;
+    @include sb;
+    align-items: flex-end;
+    margin-bottom: 2em;
+
+    .logoBox{
+      width: 295px;
+      @include bs;
+    }
+    .txtBox{
+      width: calc(100% - 500px);
+
+      p{
+        color: #fff;
+        margin-bottom: 1em;
+      }
+    }
+  }
+  .contact_list{
+
+    li{
+      @include dib;
+      width: calc(25% - 1em);
+      margin-right: 0.5em;
+      margin-bottom: 2em;
+      a{
+        color: #fff;
+        @include db;
+        text-decoration: none;
+        @include bs;
+        @include tc;
+        border: solid 1px rgba(#fff,0.6);
+        padding: 0.5em 0px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .caption{
+    font-size: calc(1em / 1.2);
+  }
+  .icon_list{
+    @include tr;
+
+    li{
+      @include dib;
+      font-size: calc(1em * 1.2 * 1.2);
+      width: 1.5em;
+      @include tc;
+
+      a{
+        color: #fff;
+      }
+    }
+  }
+  small{
+    color: #fff;
+    @include f(11);
+    @include tr;
+    @include db;
+  }
 }
 /*
 共通パーツ--------------------*/
 .tit_com01{
   font-size: calc(1em * 1.2 * 1.2);
-  font-weight: 400;
-  margin-bottom: 1.2em;
+  margin-bottom: 2em;
   color: #fff;
+  font-weight: 300;
+
+  .eng{
+    @include eng01;
+    @include db;
+    line-height: 1;
+    transform: translateY(0.5em)
+  }
 
   span{
     @include db;
     position: relative;
+    padding-bottom: 0.5em;
 
     &::before{
       @include db;
