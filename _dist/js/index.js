@@ -3,8 +3,7 @@ const { createApp } = Vue;
 const Loading = createApp({
   data() {
     return {
-      // visible: true,
-      visible: false,
+      visible: true,
       current: 0,
       progressText: 0,
       imgLoaded: 0,
@@ -49,7 +48,7 @@ const Loading = createApp({
     },
   },
   created(){
-    // this.imagesProgress();
+    this.imagesProgress();
 
   }
 });
@@ -95,7 +94,6 @@ const tumblrGetPost = createApp({
       const firstH1Content = this.getFirstContent(this.searchTagContent('h1'));
       const firstImage = this.getFirstContent(this.searchImg());
       let allChars = this.searchTagContent('p').join('');
-      // console.log(allChars.length);
       let viewChars;
       if(allChars.length > 101){
         viewChars = this.searchTagContent('p').join('').slice(0, 100);

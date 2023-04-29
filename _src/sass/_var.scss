@@ -2,10 +2,13 @@
 $f-go : YakuHanJP_Noto ,'Noto Sans JP', sans-serif;
 $f-min : 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E, serif;
 $f-eng : 'Bungee Hairline', cursive , sans-serif;
-$base : rgb(194, 194, 194);// グラデーションの薄い方
-$main : #333;
-$accent : rgb(79, 79, 79); // グラデーションの濃い方
-$pc: 1000px; // PC
+$base :#fffccc ;// グラデーションの薄い方
+$main : #fff566;
+$accent : #fff352 ; // グラデーションの濃い方
+// $fc: #333;
+$fc: #525dff;
+
+$pc: 1330px; // PC
 $tab: 768px; // タブレット
 $sp: 480px;  // スマホ
 @mixin pc {

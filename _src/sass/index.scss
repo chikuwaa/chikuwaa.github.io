@@ -23,18 +23,23 @@
   &::before{
     @include db;
     content: "";
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     position: absolute;
     top: 0px;
     left: 0px;
     @include w;
     height: 100%;
+    background-color: rgba($accent,0.3);
+
   }
 
   .line01,.line02{
     @include db;
     position: absolute;
     width: 30%;
+    @include sp{
+      width: 50%;
+    };
   }
   .line01{
     top: 0px;
@@ -73,11 +78,18 @@
 /*========= ▲LoadingのためのCSS ===============*/
 .sec_com{
   @include mb(100);
+  @include sp{
+    @include mb(50);
+  };
 }
 .post_list{
   @include flex;
   @include sb;
   list-style: none;
+  @include pc{
+    margin-left: -10px;
+    margin-right: -10px;
+  };
 
   li{
     width: 48%;
@@ -88,6 +100,14 @@
     margin-bottom: 2.5em;
     overflow: hidden;
     aspect-ratio: 1.5;
+    box-shadow: 2px 2px 0px $fc;
+    @include pc{
+      flex-basis: 21em;
+      width: auto;
+      flex-grow: 1;
+      margin: 0px 10px;
+      margin-bottom: 2.5em;
+    };
 
     .bg{
       background: rgba(0,0,0,0.5);
@@ -154,67 +174,67 @@
       z-index: 2;
       align-self: end;
       justify-self: end;
-      color: #fff;
       @include db;
       text-decoration: none;
-      background-color: $accent;
+      background-color: $main;
       padding: 1em 1.5em;
       font-size: calc(1em * 1.2 * 1.2);
       line-height: 1;
       border-radius: 10px 0px 0px 0px;
       @include bs;
       @include eng01;
-
+      font-weight: bold;
       &::after{
         @include dib;
         content: "";
         width: 0.4em;
         height: 0.4em;
-        border: solid 1px rgba(#fff,0.8);
+        border: solid 1px rgba($fc,0.8);
         border-left: none;
         border-bottom: none;
         transform: rotate(45deg);
         vertical-align: 0.15em;
-        transition: all 500ms;
+        // transition: all 500ms;
       }
 
       &:hover{
         &::after{
           transform: translateX(0.4em) rotate(45deg) ;
+          border-color: $main;
         }
+
+        background-color: $fc;
+        color: $main;
       }
     }
   }
 }
 .sec02{
   padding: 6em 0px;
-  color: #fff;
   position: relative;
-
-  .tit_com01{
-    &::before{
-      @include dn;
-    }
-  }
 
   &::before{
     @include db;
     content: "";
     position: absolute;
-    background-color: $accent;
-    left: calc(50% - 36vw);
+    background-color: $main;
+    left: calc(100% - 62.87vw );
     top: 0px;
     bottom: 0px;
     z-index: -1;
     right: 0px;
     border-radius: 0px 50px 50px 0px;
+    box-shadow: 2px 2px 0px $fc;
+    @include pc{
+      left: -20px;
+    };
   }
 
   .cap{
     font-size: calc(1em / 1.2);
     @include bs;
     padding: 0.5em ;
-    border: solid 1px #fff;
+    border: solid 1px $fc;
     @include dib;
   }
 }
