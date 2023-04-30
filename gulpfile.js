@@ -81,10 +81,10 @@ gulp.task("js", function () {
 	return gulp
         .src([srcDir+"js/**/*.js", "!" + srcDir+"js/**/*.min.js"])
         // .pipe(plumber())
-        .pipe(babel({
-			presets: ['@babel/preset-env']
-		}))
-		.pipe(gulp.dest(distDir+"js"))
+        // .pipe(babel({
+        //   presets: ['@babel/preset-env']
+        // }))
+		    .pipe(gulp.dest(distDir+"js"))
         .pipe(bs.stream());
     done();
 });

@@ -1,8 +1,13 @@
 @charset "UTF-8";
-$font : Georgia,游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E,メイリオ,Meiryo,serif;
-$key01 : #3B3353;
-$key02 : #F0F3C4;
-$pc: 1024px; // PC
+$f-go : YakuHanJP_Noto ,'Noto Sans JP', sans-serif;
+$f-min : 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E, serif;
+$f-eng : 'Bungee Hairline', cursive , sans-serif;
+$base :#fffccc ;// グラデーションの薄い方
+$main : #fff566;
+$accent : #fff352 ; // グラデーションの濃い方
+$fc: #525dff;
+
+$pc: 1330px; // PC
 $tab: 768px; // タブレット
 $sp: 480px;  // スマホ
 @mixin pc {
@@ -25,11 +30,18 @@ $sp: 480px;  // スマホ
     @content;
   }
 }
+@mixin fg{
+  font-family: $f-go;
+  // light 300
+  // regular 400
+  // medium 500
+}
 @mixin eng01{
-    font-family: 'Bellefair', serif;
+  font-family: $f-eng;
+  font-weight: 400;
 }
 @mixin eng02{
-    font-family: 'Cedarville Cursive', cursive;
+    // font-family: 'Cedarville Cursive', cursive;
 }
 @mixin dn{
     display: none;
@@ -71,6 +83,19 @@ $sp: 480px;  // スマホ
 }
 @mixin ls($tracking){
   letter-spacing: math.div( $tracking , 1000 ) + em;
+}
+@mixin flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+@mixin dib{
+  display: inline-block;
+}
+@mixin bs{
+  box-sizing: border-box;
+}
+@mixin sb{
+  justify-content: space-between;
 }
 @function calcEm($fontPxSize,$pxWidth){
   // px => em

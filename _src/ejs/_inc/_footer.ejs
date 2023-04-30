@@ -1,12 +1,39 @@
-<% 
-    var root;
-    var thisPage;
+<%
+  var root;
+  var thisPage;
 %>
-        <footer>
-            <small class="">&copy 2017-2022 geso, All Rights Reserved.</small>
-        </footer>
-        </div>
-        <script src="<%= root %>js/jquery.min.js"></script>
-        <script src="<%= root %>js/common.js"></script>
-    </body>
-</html>
+  </div>
+  <!-- ▲contents_wrap -->
+  <footer id="contact">
+    <h2 class="tit_com01"><b class="eng">Contact</b>連絡先</h2>
+    <div class="footer_in">
+      <div class="logoBox">
+        <p class="logo">
+          Geso<span>げそ</span>
+        </p>
+      </div>
+      <div class="txtBox">
+        <p class="txt_com01">
+          お問い合わせ、メッセージはこちらから
+        </p>
+        <ul class="contact_list">
+          <li><a href="<%= tumblr_ask %>" target="_blank">Tumblr Ask</a></li>
+          <li><a href="<%= gform %>" target="_blank">google Form</a></li>
+          <li><a href="m&#97;i&#108;t&#111;:&#107;&#46;a&#110;&#100;&#97;&#114;&#46;m.&#112;&#64;&#103;&#109;&#97;&#105;&#108;.&#99;o&#109;">mail</a></li>
+        </ul>
+        <p class="caption">
+          返信先をご記入いただいた場合、5日以内にお返事させていただきます。<br>
+          6日以上経っても返信がなければ、お手数をおかけしますが別の方法から再度お問い合わせいただけますと幸いです。
+        </p>
+        <ul class="icon_list">
+          <li><a href="<%= isobeage %>" target="_blank"><i class="fa-brands fa-tumblr"></i></a><span class="memo">イラスト・写真<span>ブログ</span></span></li>
+          <li><a href="<%= chikuwaaaa %>" target="_blank"><i class="fab fa-tumblr-square"></i></a><span class="memo">日記</span></li>
+          <li><a href="<%= github %>" target="_blank"><i class="fa-brands fa-github"></i></a><span class="memo">github</span></li>
+          <li><a href="https://codepen.io/chikuwaa" target="_blank"><i class="fa-brands fa-codepen"></i></a><span class="memo">試作など</span></li>
+        </ul>
+      </div>
+    </div>
+    <small class="">&copy 2017- geso, All Rights Reserved.</small>
+  </footer>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="<%= root %>js/common.js"></script>

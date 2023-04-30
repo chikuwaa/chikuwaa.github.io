@@ -1,137 +1,73 @@
-<% 
-    var root = './';
-    var thisPage = 'index';
-    var thisName = '';
-    var title = '';
+<%
+  var root = './';
+  var thisPage = 'index';
+  var thisName = '';
+  var title = '';
 %>
+<!DOCTYPE html>
+<html lang="ja">
 <%- include(root + '_inc/_head',{root,thisPage,title}) %>
-<div class="openingArea " id="top">
-    <div class="lightCord"></div>
-    <div class="light">
-        <img src="<%= root %>images/img01.png" alt="light" srcset="<%= root %>images/img01.png 1x,<%= root %>images/img01@2x.png 2x" class="off">
-        <img src="<%= root %>images/img01_on.png" alt="light" srcset="<%= root %>images/img01_on.png 1x,<%= root %>images/img01_on@2x.png 2x" class="on">
-        <h1>geso</h1>
-    </div>
-    <a href="javascript:void(0)" class="scrollBtn">Scroll<i class="fas fa-arrow-right fa-fw faa-horizontal animated"></i><i class="fas fa-arrow-right fa-fw faa-horizontal animated"></i></a>
-    <span class="skipBtn faa-bounce animated-hover">or Skip?</span>
-</div>
+<body class="">
 <%- include(root + '_inc/_header',{root,thisPage}) %>
-<main class="">
-    <div class="sec01 sec_com">
-        <p class="txt_com01">
-        げそと申します。<br>絵と漫画を描くのが好きな<br>HTMLコーダーです。
-        </p>
-        <p class="txt_com02">
-            昔遊んだ同人サイト作成の楽しさが忘れられずHTMLコーダーになりました。今もささやかながら同人活動しております。同士の皆さんのサイト制作お手伝いいたします。<br>
-            その他静的ページのコーディング・イラスト制作・漫画制作など請け負っております。
-        </p>
-        <p class="box_com01">
-            最近ほしいもの：CCDスキャナ
-        </p>
+<div id="progress">
+  <transition name="fade">
+    <div class="progress" v-if="visible" >
+      <span class="line01">
+        <svg width="1000.00" height="1000.00" viewBox="0.00 0.00 1000.00 1000.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke-linecap="round" id="line01" :class="start">
+          <path d="M980.88,0.96 C981.24,5.50 981.38,43.66 980.46,58.16 C979.65,68.16 974.42,103.05 972.39,114.22 C969.89,127.00 948.49,207.86 939.72,240.30 C935.78,253.93 926.73,281.64 921.80,296.19 C916.17,311.90 904.52,341.20 898.46,355.04 C892.27,368.79 879.55,396.46 873.03,410.39 C866.18,424.01 850.33,454.61 844.87,464.21 C837.19,477.27 822.65,500.37 811.90,515.72 C802.52,528.49 783.52,552.81 774.11,564.51 C764.47,576.07 743.80,599.70 733.03,611.44 C722.20,622.76 699.63,644.65 687.95,655.23 C676.70,664.83 649.93,686.30 641.14,692.88 C628.85,701.86 603.96,719.26 591.50,727.53 C578.90,735.54 553.37,751.34 539.81,759.17 C526.21,766.67 498.76,781.38 484.91,788.60 C470.98,795.56 442.55,808.93 428.23,815.54 C414.08,821.75 385.31,834.11 370.39,840.12 C354.82,846.03 322.51,857.90 311.88,861.27 C298.38,865.29 220.97,885.97 190.02,894.24 C174.60,898.49 147.43,905.93 133.14,909.54 C111.79,914.61 89.77,918.42 70.29,920.85 C59.36,922.04 28.34,923.21 13.97,923.66 C-1.03,923.97 -33.59,924.17 -51.14,924.05 C-85.30,922.90 -125.81,921.49 -132.16,921.22 C-134.76,921.11 -142.22,920.66 -147.08,920.33 C-148.86,920.19 -151.84,919.96 -153.03,919.87" fill="none" stroke="rgb(255, 255, 255)" stroke-width="4.00" stroke-opacity="0.30" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </span>
+      <span class="progress_text">{{ progressText }}%</span>
+      <span class="line02">
+        <svg width="1000.00" height="1000.00" viewBox="0.00 0.00 1000.00 1000.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke-linecap="round" id="line02" :class="start">
+          <path d="M15.35,1008.64 C15.35,1008.64 13.49,1008.36 13.49,1008.36 C11.83,1003.18 11.22,987.23 10.92,979.09 C10.44,961.94 10.25,930.04 10.98,914.86 C11.61,905.20 15.73,873.41 18.97,855.03 C21.15,844.00 29.18,811.59 33.88,796.73 C38.91,781.91 49.06,752.83 54.19,738.57 C59.83,724.13 71.44,695.57 78.04,681.88 C84.90,668.42 99.08,641.15 106.40,627.34 C113.57,614.17 127.90,589.22 137.45,573.66 C145.48,561.10 162.49,534.89 171.47,521.23 C180.08,508.56 198.58,483.13 207.26,471.59 C216.84,459.35 236.33,434.84 246.28,422.96 C256.48,411.15 277.10,388.36 287.34,377.64 C297.90,366.89 319.81,345.71 331.40,335.06 C343.14,324.56 367.22,304.17 379.64,294.12 C392.07,284.36 417.61,265.42 430.53,256.03 C442.92,247.45 467.83,230.52 480.34,222.18 C493.23,213.89 519.49,197.23 532.87,188.88 C545.92,181.04 572.37,165.47 585.77,157.73 C599.40,150.28 626.68,135.66 640.33,128.49 C654.71,121.24 683.37,107.07 697.38,100.55 C711.22,94.43 739.44,82.77 754.30,77.08 C769.91,71.50 798.64,61.38 814.31,56.30 C826.46,52.76 854.49,45.37 866.89,42.35 C876.41,40.19 910.57,34.51 926.39,32.06 C942.57,30.04 974.22,27.37 989.15,26.35 C996.45,26.05 1010.47,25.61 1017.18,25.47 C1034.46,25.11 1059.87,24.56 1067.99,24.38 C1069.41,24.34 1072.00,24.28 1073.17,24.26" fill="none" stroke="rgb(255, 255, 255)" stroke-width="4.00" stroke-opacity="0.30" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </span>
     </div>
-    <section class="sec02 sec_com" id="skills">
-        <h2 class="tit_com01">skills</h2>
-        <dl class="sec02__in">
-            <dt class="skill__tit">
-                <h3>HTML/CSS</h3>
-            </dt>
-            <dd class="skill__txt">
-                <p class="txt">
-                ejs/sass環境で実務経験が2年半ほどあります。<br>
-                gulpを使った開発環境でコーディングしています。ejsでのテンプレート作成はシンプルなものであれば可能です。
-                </p>
-                <div class="note box_com01">
-                    <h4>よく作るもの</h4>
-                    <p>シングルカラムタイプの静的ページ・CSSを利用した簡単なアニメーション</p>
-                </div>
-            </dd>
-            <dt class="skill__tit">
-                <h3>JavaScript</h3>
-            </dt>
-            <dd class="skill__txt">
-                <p class="txt">
-                ほとんどjQueryで書いています。実務経験は2年ほどです。
-                </p>
-                <div class="note box_com01">
-                    <h4>よく作るもの</h4>
-                    <p>コンテンツのタブ切り替え、ライブラリを利用したスライド設置</p>
-                </div>
-            </dd>
-            <dt class="skill__tit">
-                <h3>Git</h3>
-            </dt>
-            <dd class="skill__txt">
-                <p class="txt">SourceTreeで使うことが多いです。</p>
-            </dd>
-            <dt class="skill__tit">
-                <h3>Adobe <br class="sp">Photoshop・Illustrator</h3>
-            </dt>
-            <dd class="skill__txt">
-                <p class="txt">コーディング用途で実務経験2年半ほどあります。<br>プライベートではPhotoshopを写真加工によく使っています。</p>
-            </dd>
-            <dt class="skill__tit">
-                <h3>イラスト・漫画制作</h3>
-            </dt>
-            <dd class="skill__txt">
-                <p class="txt">ポストカードを売ったり、同人誌を作ったりしています。<br>使用ソフトは主にClipStudioです。アナログ作画も好きです。</p>
-                <div class="box_com01">
-                    <p>最近描いたものは<br class="sp">こちらから <i class="fas fa-arrow-right fa-fw"></i><i class="fas fa-arrow-right fa-fw"></i> <a href="<%= isobeage %>" target="_blank" rel="noopener noreferrer"><i class="fab fa-tumblr-square fa-lg"></i></a></p>
-                </div>
-            </dd>
-            <!-- <dt class="skill__tit">
-                <h3>サーバ・ネットワーク</h3>
-            </dt>
-            <dd class="skill__txt">
-                <p class="txt">元インフラエンジニアです。ブランク2年ほどあります。</p>
-            </dd> -->
-        </dl>
-    </section>
+  </transition>
+</div>
 
-    <section class="sec03 sec_com" id="price">
-        <h2 class="tit_com01">price</h2>
-        <p class="txt_com02 tc">詳細はコンタクトからお問い合わせください。<br>ご相談内容をもとにお見積りいたします。</p>
-        <dl class="sec03_in">
-            <dt class="price__tit"><h3>同人サイトお手伝い</h3></dt>
-            <dd class="price__yen">&yen;500～</dd>
-            <dd class="price__txt box_com01">
-                <h4>HTML(タグ)・CSS相談&yen;500～/ゼロから作成&yen;10,000～ など</h4>
-                <!-- <p>個人サイトでよく使われてるサービスでは、以下のサービスで作成経験があります。こちら以外でもお気軽にご相談ください。</p>
-                <ul>
-                    <li><a href="https://web.fc2.com/" target="_blank" rel="noopener noreferrer">FC2ホームページ</a></li>
-                    <li><a href="https://nanos.jp/" target="_blank" rel="noopener noreferrer">ナノ</a></li>
-                    <li><a href="https://www.tumblr.com/" target="_blank" rel="noopener noreferrer">Tumblr</a></li>
-                </ul> -->
-            </dd>
-        </dl>
-        <dl class="sec03_in">
-            <dt class="price__tit">
-                <h3>HTML/CSSコーディング</h3>
-            </dt>
-            <dd class="price__yen">&yen;10,000～</dd>
-            <dd class="price__txt box_com01">
-                <h4>LPコーディング&yen;10,000～ など</h4>
-                <p>デザインはご提供ください。対応可能なデザインデータはPhotoshop形式またはXD形式になります。SPデザインはなくても対応可能です。</p>
-            </dd>
-        </dl>
-        <dl class="sec03_in">
-            <dt class="price__tit">
-                <h3>イラスト制作</h3>
-            </dt>
-            <dd class="price__yen">&yen;3,000～</dd>
-            <dd class="price__txt box_com01">
-                <h4>SNSアイコン作成&yen;3,000～ など</h4>
-            </dd>
-        </dl>
-    </section>
+<main class="contents">
+  <section class="sec_com" id="news">
+    <div id="app">
+      <h2 class="tit_com01"><span><b class="eng">New</b>新着記事一覧</span></h2>
+      <ul class="post_list">
+        <li v-for="post in viewPosts" :key="post.id" :style="post.styleObject">
+          <div class="bg"></div>
+          <p class="post_tit" v-if="post.title">{{ post.title }}</p>
+          <figure v-if="post.firstImage">
+            <img :src="post.firstImage" alt="First Image">
+          </figure>
+          <template v-else>
+            <div class="post_txt">{{ post.first100Chars }}</div>
+          </template>
+          <p class="tag" :style="post.styleObject">{{ post.srcBlogName }}</p>
+          <p class="post_date">{{ formatDate(post.date) }}</p>
 
-    <section class="sec04" id="contact">
-        <h2 class="tit_com01">contact</h2>
-        <p class="txt_com02">
-            5日以内に何らかのお返事させていただきます。それ以上待っても連絡がない場合は、お手数をおかけしますが別の方法*から再度お問い合わせいただけますと幸いです。
-            <span class="caption">*メールでお問い合わせいただいていた場合はTumblrメッセージなど</span>
-        </p>
-        <p class="txt02">連絡先は<span class="sp_contact_link">こちら<span>  <i class="fas fa-arrow-right fa-fw pc faa-horizontal animated"></i><i class="fas fa-arrow-right fa-fw pc faa-horizontal animated"></i></p>
-        <div class="arrows pc"><i class="fas fa-arrow-right fa-fw faa-horizontal animated"></i><i class="fas fa-arrow-right fa-fw faa-horizontal animated"></i><i class="fas fa-arrow-right fa-fw faa-horizontal animated"></i></div>
-    </section>
+          <a :href="post.srcUrl" target="_blank">More</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec_com sec02" id="about">
+    <h2 class="tit_com01"><b class="eng">About</b>お仕事のご依頼について</h2>
+    <p class="txt_com01">
+      LPコーディングやHP修正作業など請け負っております。<br>
+      <span class="cap">LPコーディング:11,000円～/HP修正:見積り対応</span>
+    </p>
+    <p class="txt_com01">
+      イラスト・漫画コミッションは準備中です。
+    </p>
+  </section>
 </main>
 <%- include(root + '_inc/_footer',{root,thisPage}) %>
+
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="<%= root %>js/index.js"></script>
+</body>
+</html>
