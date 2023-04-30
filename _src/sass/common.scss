@@ -280,13 +280,85 @@ footer{
   }
   .icon_list{
     @include tr;
+    @include sp{
+      display: flex;
+      justify-content: space-around;
+      padding-top: 4em;
+    };
 
     li{
       @include dib;
       font-size: calc(1em * 1.2 * 1.2);
       width: 1.5em;
       @include tc;
+      position: relative;
+      @include sp{
+        flex-grow: 1;
+      };
 
+      .memo{
+        position: absolute;
+        background-color: $base;
+        @include db;
+        font-size: calc(1rem * 1.2);
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 9em;
+        padding: 5px;
+        @include bs;
+        border-radius: 5px;
+        @include dn;
+        @include sp{
+          @include db;
+          font-size: 1rem;
+          width: 99%;
+          max-width: 9em;
+          padding: 5px 2px;
+        };
+
+        span{
+          @include dib;
+        }
+        &::after{
+          content: "";
+          @include db;
+          border: solid 0.5em transparent;
+          position: absolute;
+          top:100%;
+          left: calc(50% - 0.5em);
+          border-top-color: $base;
+          border-bottom: none;
+        }
+      }
+      &:hover{
+        .memo{
+          @include db;
+        }
+      }
+      &:last-child{
+
+        .memo{
+          left: auto;
+          right: 0px;
+          transform: translateX(0%);
+          @include sp{
+            right: 50%;
+            transform: translateX(50%);
+
+          };
+
+          &::after{
+            left: auto;
+            right: 1em;
+            @include sp{
+              right: 50%;
+              transform: translateX(50%);
+
+            };
+          }
+        }
+      }
     }
   }
   small{
