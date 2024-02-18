@@ -82,7 +82,7 @@ const tumblrGetPost = createApp({
       this.doc = new DOMParser().parseFromString(htmlData, 'text/html');
     },
     searchTagContent(tag) {
-      return Array.from(this.doc.getElementsByTagName(tag)).map((node) => node.innerHTML);
+      return Array.from(this.doc.getElementsByTagName(tag)).map((node) => node.textContent || node.innerText);
     },
     searchImg(){
       return Array.from(this.doc.getElementsByTagName('img')).map((node) => node.src);
