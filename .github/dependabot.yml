@@ -1,0 +1,22 @@
+# `dependabot.yml` file with updates
+
+version: 2
+updates:
+  # Configuration for Dockerfile
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      # Disable all pull requests for Docker dependencies
+    open-pull-requests-limit: 0
+
+  # Configuration for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: ""
+        # Ignore only new versions for 4.x and 5.x
+        update-types: [ "version-update:semver-major" ]
+      
